@@ -1,24 +1,49 @@
-# ??
+# ReVege
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## サイト概要
+毎日でる廃棄野菜や果物、またそれらをリメイクした商品を販売するECサイト。
+サイトに商品を出品する農家を管理者側とし、商品を購入するユーザーを会員側として運営する。
 
-* Ruby version
 
-* System dependencies
+### サイトテーマ
+農家と購入者の需要を供給を一致させ、フードロスを少しでも改善する。
 
-* Configuration
 
-* Database creation
+### テーマを選んだ理由
+実家の農家で廃棄する野菜や果物が出ている状況を見て、ECサイトを利用してフードロスの改善ができれば良いと考えたため。
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### ターゲットユーザ
+20~50代の主婦層
 
-* Deployment instructions
 
-* ...
+### 主な利用シーン
+・傷物でも良いから安く野菜を購入したい時
+・お得に大量の野菜を購入したい時
+
+
+## 設計書
+
+
+
+## 開発環境
+
+- OS：Linux(CentOS)
+
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+
+- フレームワーク：Ruby on Rails
+
+- JSライブラリ：jQuery
+
+- IDE：Cloud9
+
+
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
