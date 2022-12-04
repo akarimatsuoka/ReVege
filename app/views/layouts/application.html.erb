@@ -21,54 +21,30 @@
                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                  <ul class="navbar-nav ml-auto ">
 
-                <!--以下会員がログインした場合の表示-->
                    <% if customer_signed_in? %>
+                   <!--以下会員がログインした場合の表示-->
                       <li class="mr-2"><%= link_to "マイページ", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
                       <li class="mr-2"><%= link_to "商品一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
                       <li class="mr-2"><%= link_to "カート", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
                       <li class="mr-2"><%= link_to "ログアウト", root_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
                    <% elsif admin_signed_in? %>
                    <!--以下、管理者がログインした場合の表示-->
-                     <li>
-                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
-                         商品一覧
-                       <%end%>
-                     </li>
-
-                     <li>
-                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
-                         会員一覧
-                       <%end%>
-                     </li>
-
-                     <li>
-                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
-                         注文履歴一覧
-                       <%end%>
-                     </li>
-
-                     <li>
-                        <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
-                          ジャンル一覧
-                        <% end %>
-                     </li>
-
-                     <li>
-                        <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2", method: :delete do %>
-                          ログアウト
-                        <% end %>
-                     </li>
+                      <li class="mr-2"><%= link_to "商品一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                      <li class="mr-2"><%= link_to "会員一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                      <li class="mr-2"><%= link_to "注文履歴一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                      <li class="mr-2"><%= link_to "ジャンル一覧", root_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                      <li class="mr-2"><%= link_to "ログアウト", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
                    <% else %>
                    <!--以下はログインしてない場合の表示-->
                       <li class="mr-2">
                        <%=link_to about_path, class:'btn btn-outline-secondary rounded-pill' do %>
-                         <i class="far fa-question-circle mx-1"></i>ReVegeとは
+                         <i class="fas fa-question mr-2"></i>ABOUT US
                        <%end%>
                       </li>
 
                       <li class="mr-2">
                        <%=link_to root_path, class:'btn btn-outline-secondary rounded-pill' do %>
-                         <i class="fas fa-leaf mx-1"></i>商品一覧
+                         <i class="fas fa-seedling mr-2"></i>商品一覧
                        <%end%>
                       </li>
 
