@@ -6,11 +6,90 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="ml-5" href="/"><%=image_tag "header3.png", size:"170x120" %></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav ml-auto ">
+
+                <!--以下会員がログインした場合の表示-->
+                   <% if customer_signed_in? %>
+                      <li class="mr-2"><%= link_to "マイページ", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                      <li class="mr-2"><%= link_to "商品一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                      <li class="mr-2"><%= link_to "カート", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                      <li class="mr-2"><%= link_to "ログアウト", root_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                   <% elsif admin_signed_in? %>
+                   <!--以下、管理者がログインした場合の表示-->
+                     <li>
+                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
+                         商品一覧
+                       <%end%>
+                     </li>
+
+                     <li>
+                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
+                         会員一覧
+                       <%end%>
+                     </li>
+
+                     <li>
+                       <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
+                         注文履歴一覧
+                       <%end%>
+                     </li>
+
+                     <li>
+                        <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2" do %>
+                          ジャンル一覧
+                        <% end %>
+                     </li>
+
+                     <li>
+                        <%=link_to root_path, class:"nav-link text-dark btn btn-outline-secondary mx-2", method: :delete do %>
+                          ログアウト
+                        <% end %>
+                     </li>
+                   <% else %>
+                   <!--以下はログインしてない場合の表示-->
+                      <li class="mr-2">
+                       <%=link_to about_path, class:'nav-link text-dark btn btn-outline-secondary rounded-pill' do %>
+                         <i class="far fa-question-circle mx-1"></i>ReVegeとは
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to root_path, class:'nav-link text-dark btn btn-outline-secondary rounded-pill' do %>
+                         <i class="fas fa-leaf mx-1"></i>商品一覧
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to root_path, class:'nav-link text-dark btn btn-outline-success rounded-pill' do %>
+                        ログイン|会員登録
+                       <%end%>
+                      </li>
+                   <%end%>
+                </ul>
+            </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+        <p style= "text-align: center;">@ReVege</p>
+  　</footer>
+
   </body>
 </html>
