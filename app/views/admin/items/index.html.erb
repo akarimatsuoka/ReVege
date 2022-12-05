@@ -1,0 +1,42 @@
+<div class="container">
+ <div class="row">
+  <div class="col">
+   <h4 class="m-4 d-flex justify-content-between font-weight-bold">商品一覧
+   <%=link_to "商品を追加する", new_admin_item_path, class: "btn btn-warning rounded-pill" %></h4>
+   </div>
+          <table class='table table-inverse text-center'>
+            <thead>
+              <tr>
+                <th>ショップ名</th>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜き価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @items.each do |item| %>
+                <tr>
+                  
+                  <td><%= item.id %></td>
+                  <td>
+                    <%=link_to admin_item_path(item.id), class: "text-white" do %>
+                      <%= item.name %>
+                    <% end %>
+                  </td>
+                  <td><%= item.price.to_s(:delimited) %></td>
+                  <td><%= item.genre.name %></td>
+                      <% if item.status == true %>
+                  <td class="text-success"><strong>販売中</strong></td>
+                      <% else %>
+                  <td class="text-white"><strong>販売停止中</strong></td>
+                    <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+     </div>
+  </div>
