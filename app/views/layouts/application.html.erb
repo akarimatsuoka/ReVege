@@ -21,21 +21,40 @@
                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                  <ul class="navbar-nav ml-auto ">
 
-                   <% if customer_signed_in? %>
                    <!--以下会員がログインした場合の表示-->
-                      <li class="mr-2"><%= link_to "マイページ", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                      <li class="mr-2"><%= link_to "商品一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                      <li class="mr-2"><%= link_to "カート", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                      <li class="mr-2"><%= link_to "ログアウト", root_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                   <% elsif admin_signed_in? %>
+                   <% if customer_signed_in? %>
+                      <li class="mr-2">
+                       <%=link_to about_path, class:'btn btn-outline-secondary rounded-pill' do %>
+                         <i class="fas fa-house-user mr-2"></i>マイページ
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to root_path, class:'btn btn-outline-secondary rounded-pill' do %>
+                         <i class="fas fa-seedling mr-2"></i>商品一覧
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to new_customer_session_path, class:'btn btn-outline-secondary rounded-pill' do %>
+                        <i class="fas fa-shopping-cart mr-2"></i>カート
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to destroy_customer_session_path, method: :delete, class:'btn btn-outline-secondary rounded-pill' do %>
+                         ログアウト
+                       <%end%>
+                      </li>
                    <!--以下、管理者がログインした場合の表示-->
-                      <li class="mr-2"><%= link_to "商品一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                      <li class="mr-2"><%= link_to "会員一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                      <li class="mr-2"><%= link_to "注文履歴一覧", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                      <li class="mr-2"><%= link_to "ジャンル一覧", root_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                      <li class="mr-2"><%= link_to "ログアウト", root_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                   <% else %>
+                   <% elsif admin_signed_in? %>
+                      <li class="mr-2"><%= link_to "商品一覧", root_path, class:'btn btn-outline-secondary rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "会員一覧", root_path, class:'btn btn-outline-secondary rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "注文履歴一覧", root_path, class:'btn btn-outline-secondary rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "ジャンル一覧", root_path, class:'btn btn-outline-secondary rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'btn btn-outline-secondary rounded-pill' %></li>
                    <!--以下はログインしてない場合の表示-->
+                   <% else %>
                       <li class="mr-2">
                        <%=link_to about_path, class:'btn btn-outline-secondary rounded-pill' do %>
                          <i class="fas fa-question mr-2"></i>ABOUT US
@@ -49,7 +68,7 @@
                       </li>
 
                       <li class="mr-2">
-                       <%=link_to root_path, class:'btn btn-primary rounded-pill' do %>
+                       <%=link_to new_customer_session_path, class:'btn btn-primary rounded-pill' do %>
                         ログイン|会員登録
                        <%end%>
                       </li>
