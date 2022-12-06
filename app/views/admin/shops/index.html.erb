@@ -25,6 +25,10 @@
                    　　<%= shop.prefecture_i18n %><%= shop.address %>
                   </td>
                   <td><%= shop.phone_number%></td>
+                  <td>
+                      <%= link_to "編集する", edit_admin_shop_path(shop.id), class: "btn btn-outline-primary" %>
+                      <%= link_to "削除する", admin_shop_path(shop.id), data: {confirm: "本当に消しますか？"}, class: "btn btn-outline-danger", method: :delete %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
