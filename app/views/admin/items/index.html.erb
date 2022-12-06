@@ -7,8 +7,8 @@
           <table class='table table-inverse text-center'>
             <thead>
               <tr>
-                <th>ショップ名</th>
                 <th>商品ID</th>
+                <th>ショップ名</th>
                 <th>商品名</th>
                 <th>税抜き価格</th>
                 <th>ジャンル</th>
@@ -20,8 +20,8 @@
             <tbody>
               <% @items.each do |item| %>
                 <tr>
-                  
                   <td><%= item.id %></td>
+                  <!--<td>ショップ名入れる</td>-->
                   <td>
                     <%=link_to admin_item_path(item.id), class: "text-white" do %>
                       <%= item.name %>

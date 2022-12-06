@@ -33,7 +33,7 @@
 
           <tr>
              <th><%= f.label "郵便番号" %></th>
-             <td><%= f.text_field :postal_code, placeholder: "ショップ名" %></td>
+             <td><%= f.text_field :postal_code, placeholder: "郵便番号(ハイフンなし)" %></td>
           </tr>
 
           <tr>
@@ -43,12 +43,12 @@
 
           <tr>
              <th><%=f.label:"住所" %></th>
-             <td><%= f.text_field :address, placeholder: "市区町村以下の住所を記入" %></td>
+             <td><%= f.text_field :address, placeholder: "市区町村以下の住所" %></td>
           </tr>
 
           <tr>
              <th><%=f.label:"電話番号" %></th>
-             <td><%= f.text_field :phone_number, placeholder: "ショップの電話番号" %></td>
+             <td><%= f.text_field :phone_number, placeholder: "電話番号(ハイフンなし)" %></td>
           </tr>
         </tbody>
       </table>
