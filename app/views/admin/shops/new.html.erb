@@ -1,2 +1,61 @@
-<h1>Admin::Shops#new</h1>
-<p>Find me in app/views/admin/shops/new.html.erb</p>
+<div class="container py-5" >
+  <div class="row">
+    <h4 class="col mb-5 mt-3 text-center font-weight-bold">新規ショップ登録</h4>
+        <% if @shop.errors.any? %>
+           <%= @shop.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @shop.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+  </div>
+
+  <div class="row d-flex justify-content-center">
+    <%= form_with model: @shop, url: admin_shops_path, method: :post do |f| %>
+
+      <table class="table text-center" style="margin:auto;">
+        <tbody>
+          <tr>
+             <th><%= f.label "ショップ画像" %></th>
+             <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+            
+          <tr>
+             <th><%= f.label "ショップ名" %></th>
+             <td><%= f.text_field :name, placeholder: "ショップ名" %></td>
+          </tr>
+
+          <tr>
+             <th><%= f.label "ショップ紹介"%></th>
+             <td><%= f.text_area :introduction, placeholder: "ここに紹介文を記述します" %></td>
+          </tr>
+
+          <tr>
+             <th><%= f.label "郵便番号" %></th>
+             <td><%= f.text_field :postal_code, placeholder: "ショップ名" %></td>
+          </tr>
+
+          <tr>
+             <th><%= f.label "都道府県"%></th>
+             <td><%=f.select :prefecture, options_from_collection_for_select(Genre.all, :id, :name), include_blank: '選択してください' %></td>
+          </tr>
+
+          <tr>
+             <th><%=f.label:"住所" %></th>
+             <td><%= f.text_field :address, placeholder: "市区町村以下の住所を記入" %></td>
+          </tr>
+          
+          <tr>
+             <th><%=f.label:"電話番号" %></th>
+             <td><%= f.text_field :phone_number, placeholder: "ショップの電話番号" %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row d-flex justify-content-center">
+        <%= f.submit "新規登録", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  </div>
+</div>
