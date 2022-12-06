@@ -1,11 +1,11 @@
 class Admin::ShopsController < ApplicationController
   def new
-    @shop=Shop.
+    @shop=Shop.new
   end
 
   def edit
   end
 
-  def index　show
+  def index
   end
 end
