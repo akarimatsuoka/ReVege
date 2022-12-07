@@ -19,7 +19,6 @@
           <tr>
              <th><%= f.label "ショップ名" %></th>
              <td><%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :name_display) %></td>
-             <!--<td>プルダウン式でショップIDとショップ名で出てくるようにする</td>-->
           </tr>
 
           <tr>

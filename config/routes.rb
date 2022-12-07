@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     #public/addresses
     scope module: :public do
       resources :shipping_addresses
+      resources :items
     end
 
 
