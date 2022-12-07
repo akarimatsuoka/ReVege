@@ -12,8 +12,8 @@
             <%= link_to item_path(item) do %>
               <%= image_tag item.image, size: "150x150" %>
             <% end %>
-            <p><strong><%= link_to item.name, item_path(item), class: "font-weight-bold"%></strong></p>
-            <p><strong>¥<%= item.price.to_s(:delimited)  %></strong></p>
+            <p><strong><%= link_to item.name, item_path(item), class: "font-weight-bold"%></strong>/<%= item.shop.name %></p>
+            <p><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
           </div>
         <% end %>
       </div>
