@@ -24,7 +24,7 @@
                    <!--以下会員がログインした場合の表示-->
                    <% if customer_signed_in? %>
                       <li class="mr-2">
-                       <%=link_to about_path, class:'btn btn-outline-secondary rounded-pill' do %>
+                       <%=link_to my_page_path, class:'btn btn-outline-secondary rounded-pill' do %>
                          <i class="fas fa-house-user mr-2"></i>マイページ
                        <%end%>
                       </li>

@@ -64,7 +64,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
    def after_sign_in_path_for(resource)
      if current_customer
-       root_path
+       my_page_path
      end
    end
 
