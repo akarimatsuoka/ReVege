@@ -13,9 +13,9 @@
 </div>
 
 <div class="row d-flex justify-content-center">
+  <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
    <div class"col-md-6">
       <table class="table text-center">
-        <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
         <tbody>
             <tr>
               <th><%= f.label "商品画像" %></th>
@@ -24,7 +24,7 @@
 
             <tr>
               <th><%= f.label "ショップ名"%></th>
-              <td><!--text_fieldでショップ名変更できるようにして、記入せんでも良いようにする--></td>
+              <td><%= f.select :shop_id, options_from_collection_for_select(Shop.all, :id, :name_display) %></td>
             </tr>
 
             <tr>
@@ -39,7 +39,7 @@
 
             <tr>
               <th><%= f.label "ジャンル" %></th>
-               <td><%=f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
+              <td><%=f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %></td>
             </tr>
 
             <tr>
@@ -58,9 +58,8 @@
         </tbody>
       </table>
    </div>
-</div>
-
-    <div class="row pb-5 d-flex justify-content-center">
+   <div class="row pb-5 d-flex justify-content-center">
         <%= f.submit "変更を保存", class: 'btn btn-success' %>
-        <% end %>
     </div>
+  <% end %>
+</div>

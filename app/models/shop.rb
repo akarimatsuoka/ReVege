@@ -1,8 +1,8 @@
 class Shop < ApplicationRecord
 
-  # def name_display
-  #   id + ' ' + name
-  # end
+  def name_display
+    id.to_s + ',' + name #idがintegerでnameがstringだからto_sをつけて数値変換してる
+  end
 
   has_one_attached :image
   has_many :items, dependent: :destroy
