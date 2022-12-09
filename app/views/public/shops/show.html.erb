@@ -1,0 +1,40 @@
+<div class="container py-5">
+    <div class="row">
+      <div class="col-12">
+         <h4 class="m-4 pb-2 text-center font-weight-bold">ジャンル編集</h4>
+      </div>
+    </div>
+    
+      <div class="row py-1 pb-3 d-flex justify-content-center">
+        <div class="col-md-8 offset-md-1">
+          <div class="d-flex flex-row">
+            <div style="margin-right: 10px;"><%= image_tag @shop.image, size: "300x300" %></div>
+              <table class="table table-striped"style="text-align: center;">
+                <tbody>
+                  <tr>
+                    <th><h3><strong><%= @shop.name %></strong></h3></th>
+                  </tr>
+
+                  <tr>
+                    <th><%= @shop.introduction %></th>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      〒<%= @shop.postal_code %><br>
+                      <%= @shop.prefecture %><%= @shop.address %>
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th><%= @shop.phone_number %></th>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

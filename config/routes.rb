@@ -22,10 +22,10 @@ Rails.application.routes.draw do
       patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw' #退会処理
     end
 
-    #public/addresses
     scope module: :public do
       resources :shipping_addresses
       resources :items
+      resources :shops
     end
 
 
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       resources :genres
       resources :items
       resources :shops
+      resources :customers
     end
 
 end
