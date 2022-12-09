@@ -6,20 +6,19 @@
     </div>
     
     <div class="row py-1 pb-3 d-flex justify-content-center">
-      <div class="col-6">
-        <table class="table text-center">
-          
-     　    <tbody>
-     　　     <%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
-          　   <tr>
-           　    <td style="vertical-align: middle;" >ジャンル名</td>
-                <td style="vertical-align: middle;"><%= f.text_field :name %></td>
-                <td><%= f.submit '変更を保存', class: "btn btn-info" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+      <%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
+        <div class="col">
+          <table class="table text-center">
+       　    <tbody>
+            　   <tr>
+             　    <td style="vertical-align: middle;" >ジャンル名</td>
+                  <td style="vertical-align: middle;"><%= f.text_field :name %></td>
+                  <td><%= f.submit '変更を保存', class: "btn btn-info" %></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
     </div>
 </div>
 
