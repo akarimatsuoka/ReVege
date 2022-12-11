@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item ||= current_customer.cart_items.new(item_id: params[:cart_item][:item_id]) #「||」は中身が空かどうか確認してる。空だったら1行目に飛ぶ。
+    @cart_item ||= current_customer.cart_items.new(item_id: params[:cart_item][:item_id]) #「||」は中身が空かどうか確認してる。空じゃなかったら15行目に飛ぶ。
     #11行目は13,14行目の内容にitem_idの情報が入った１文になってる
       # @cart_item ||= CartItem.new
       # @cart_item.customer_id = current_customer.id
@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
       if @cart_item.save
         redirect_to cart_items_path
       else
-        redirect_to item_path(params[:cart_item][:item_id])
+        redirect_to item_path(params[:cart_item][:item_id]) #ここparamsいるの？なにこれ
       end
   end
 
