@@ -6,7 +6,7 @@
           <table class="table table-striped"style="text-align: center;">
             <tbody>
               <tr>
-                <th><h3><strong><%= @item.name %></strong></h3></th>
+                <th><h4><strong><%= @item.name %></strong></h4></th>
               </tr>
 
               <tr>
@@ -14,13 +14,17 @@
               </tr>
 
               <tr>
-                <th><strong>¥<%=@item.with_tax_price.to_s(:delimited) %>(税込)</strong></th>
+                <th>¥<%=@item.with_tax_price.to_s(:delimited) %>(税込)</th>
+              </tr>
+
+              <tr>
+                <th><%= image_tag @item.shop.image, size: "50x50" %>&nbsp;<%= @item.shop.name %></th>
               </tr>
 
               <tr>
                 <td style="vertical-align: middle;" >
                   <div class="d-flex flex-row">
-                    <%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local: true do |f| %>
+                    <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
                       <%= f.select :quantity, [['1個',1], ['2個',2], ['3個',3], ['4個',4], ['5個',5], ['6個',6], ['7個',7], ['8個',8], ['9個',9], ['10個',10]] , include_blank: "個数選択" %>
                       <%= f.hidden_field :item_id, :value => @item.id %>
                       <%= f.submit "カートに入れる", class: 'btn btn-success' %>

@@ -23,10 +23,13 @@ Rails.application.routes.draw do
     end
 
     scope module: :public do
+      delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all" #「resources:cart_items」の上にdestroy_allを持ってきたらidがつかない
+      resources:cart_items, only: [:index,:update,:destroy,:create] 
       resources :shipping_addresses
       resources :items
       resources :shops
     end
+
 
 
     # 管理者用
