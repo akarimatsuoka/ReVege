@@ -27,7 +27,7 @@
               <%= image_tag cart_item.item.image, size: "100x100" %>
               <%= cart_item.item.name %>
             </th>
-            <td style="align-items: center;"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td style="align-items: center;">¥<%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
         　        <!--下記は個数の更新が行える記述-->
             <td>
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), methot: :patch do |f| %>
