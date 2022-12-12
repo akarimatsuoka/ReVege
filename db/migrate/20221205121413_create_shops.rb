@@ -4,7 +4,7 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.string :name, null: false, default: ""
       t.text :introduction, null: false, default: ""
       t.integer :postal_code, null: false, default: ""
-      t.integer :prefecture, null: false, default:0
+      t.string :prefecture, null: false, default: ""
       t.string :address, null: false, default: ""
       t.string :phone_number, null: false, default: ""
       t.timestamps

@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2022_12_12_112928) do
     t.string "name", default: "", null: false
     t.text "introduction", default: "", null: false
     t.integer "postal_code", null: false
-    t.integer "prefecture", default: 0, null: false
+    t.string "prefecture", default: "", null: false
     t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
