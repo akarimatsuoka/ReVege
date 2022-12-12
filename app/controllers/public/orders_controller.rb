@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order=Order.new(order_params)
+    @cart_items = current_customer.cart_items.all
     @postage = 800
     @customer = current_customer
     @addresses = current_customer.shipping_addresses
@@ -40,6 +41,4 @@ class Public::OrdersController < ApplicationController
   def complete
   end
 
-  def confirm
-  end
 end
