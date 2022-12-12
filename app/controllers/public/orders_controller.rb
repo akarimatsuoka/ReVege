@@ -38,22 +38,24 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @postage = 600
 
-   # @cart_items.each do |cart_item|
-     # order_item = OrderItem.new
-      #order_item.order_id = @order.id
-     # order_item.item_id = cart_item.item.id
-     # order_item.quantity = cart_item.quantity
-     # order_item.price = cart_item.item.with_tax_price
-     # order_item.save
-  #  end
+    @cart_items.each do |cart_item|
+      order_item = OrderItem.new
+      order_item.order_id = @order.id
+      order_item.item_id = cart_item.item.id
+      order_item.quantity = cart_item.quantity
+      order_item.price = cart_item.item.with_tax_price
+      order_item.save
+    end
     redirect_to complete_path
     @cart_items.destroy_all
   end
 
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   private
