@@ -2,7 +2,7 @@
       <h2 class="text-center mb-3"><strong>注文情報確認</strong></h2>
         <div class="row mb-3 justify-content-center">
     　     <div clas ="col-md-8">
-              <table class="table table-bordered" style="color:white;">
+              <table class="table table-bordered">
                   <thead  class="table-secondary">
                     <tr class="table-secondary text-center">
                       <th scope="col" style="color:black;">商品名</th>
@@ -30,7 +30,7 @@
           </div>
 
           <div class ="col-lg-3 offset-1">
-              <table class="table table-bordered" style="color:white;">
+              <table class="table table-bordered">
                 <tbody>
                   <tr>
                     <th class="table-secondary text-center" style="color:black;">送料</th>
@@ -51,7 +51,7 @@
 
       <div class="row justify-content-center">
           <div class="col-md-10">
-              <table class="table table-bordered" style="color:white;">
+              <table class="table table-bordered">
                    <tbody>
                       <tr>
                           <th class="table-secondary text-center" style="color:black;">支払方法</th>
@@ -69,17 +69,17 @@
           </div>
       </div>
 
-          <div style="text-align:center;">
-              <!-- ユーザーには注文確定ボタンだけ表示 -->
-              <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
-                <%= f.hidden_field :payment_method %>
-                <%= f.hidden_field :name %>
-                <%= f.hidden_field :postal_code %>
-                <%= f.hidden_field :address %>
-                <%= f.hidden_field :postage, value: @postage %>
-                <%= f.hidden_field :price, value: sum + @postage %>
-                <%= f.hidden_field :customer_id, value: current_customer.id %>
-                <%= f.submit "注文を確定する", class:'btn btn-success' %>
-              <% end %>
-          </div>
+      <div style="text-align:center;">
+        <!-- ユーザーには注文確定ボタンだけ表示 -->
+          <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+            <%= f.hidden_field :payment_method %>
+            <%= f.hidden_field :name %>
+            <%= f.hidden_field :postal_code %>
+            <%= f.hidden_field :address %>
+            <%= f.hidden_field :postage, value: @postage %>
+            <%= f.hidden_field :price, value: sum + @postage %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.submit "注文を確定する", class:'btn btn-success' %>
+          <% end %>
+      </div>
 </div>
