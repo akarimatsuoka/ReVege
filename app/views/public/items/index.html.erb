@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row my-5 py-5">
     <div class="col-md-8 offset-md-1">
+      <%= search_form_for @search, url: items_path do |f| %>
+        <!--name_contは、あいまい検索を指定-->
+        <%= f.search_field :name_cont %>
+        <%= f.collection_select :shop_prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %>
+        <%= f.submit "検索" %>
+      <% end %>
+
       <div class="d-flex flex-wrap">
         <h3><strong>商品一覧</strong></h3>
           <div>(全<%= @items.count %>件)</div>
