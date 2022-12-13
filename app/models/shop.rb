@@ -7,6 +7,11 @@ class Shop < ApplicationRecord
 
   has_one_attached :image
   has_many :items, dependent: :destroy #shopを消したらそれに紐づいているitemsも消える
+  has_many :bookmarks, dependent: :destroy
+
+  def bookmarked_by?(customer)
+    bookmarks.where(customer_id: customer).exists?
+  end
 
 
 #12,15,16,17行目はenumを使用した時の記述（jp_prefectureを使用してればstring型のprefectureカラムを用意さえすればenum使わなくていい）

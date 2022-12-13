@@ -22,9 +22,11 @@ Rails.application.routes.draw do
       patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw' #退会処理
     end
 
+    #ゲストログインのルーティング
     devise_scope :customer do
       post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
     end
+
 
     #public/orders
     scope module: :public do
@@ -35,12 +37,14 @@ Rails.application.routes.draw do
 
     scope module: :public do
       delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all" #「resources:cart_items」の上にdestroy_allを持ってきたらidがつかない
-      resources:cart_items, only: [:index,:update,:destroy,:create]
+      resources :cart_items, only: [:index,:update,:destroy,:create]
       resources :shipping_addresses
       resources :items
-      resources :shops
-    end
+      resources :shops do
+        resource :bookmarks, only: %i[create destroy]
+      end
 
+    end
 
 
     # 管理者用
@@ -56,5 +60,4 @@ Rails.application.routes.draw do
       resources :customers
       resources :orders
     end
-
 end

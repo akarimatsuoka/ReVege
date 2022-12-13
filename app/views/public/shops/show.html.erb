@@ -12,7 +12,10 @@
               <table class="table table-striped"style="text-align: center;">
                 <tbody>
                   <tr>
-                    <th><h3><strong><%= @shop.name %></strong></h3></th>
+                    <th>
+                      <h3><strong><%= @shop.name %></strong></h3>
+                      <span id="bookmark_button_<%= @shop.id %>"><%= render 'public/bookmarks/bookmark_button', shop: @shop %></span>
+                    </th>
                   </tr>
 
                   <tr>

@@ -1,0 +1,5 @@
+<% if current_customer.bookmark?(shop) %>
+  <%= render 'public/bookmarks/unbookmark', shop: shop %>
+<% else %>
+  <%= render 'public/bookmarks/bookmark', shop: shop %>
+<% end %>
