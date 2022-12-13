@@ -4,7 +4,7 @@
       <%= search_form_for @search, url: items_path do |f| %>
         <!--name_contは、あいまい検索を指定-->
         <%= f.search_field :name_cont, placeholder: "キーワードから探す" %>
-        <!--ransackを利用する時のカラム_eqは「イコール」の略-->
+        <!--ransackを利用する時のカラム。_eqは「イコール」の略-->
         <%= f.collection_select :shop_prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %> 
         <%= f.submit "検索" %>
       <% end %>

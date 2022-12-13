@@ -8,6 +8,7 @@ class Shop < ApplicationRecord
   has_one_attached :image
   has_many :items, dependent: :destroy #shopを消したらそれに紐づいているitemsも消える
   has_many :bookmarks, dependent: :destroy
+  belongs_to :customer
 
   def bookmarked_by?(customer)
     bookmarks.where(customer_id: customer).exists?

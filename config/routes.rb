@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get 'customers/my_page' => 'customers#show', as: 'my_page'
       get 'customers/information/edit' => 'customers#edit'
       patch 'customers/information' => 'customers#update', as: 'information'
-
+      get 'customers/bookmark' => "customers#bookmark", as: 'bookmark' #ブックマーク一覧ページ
       get 'customers/confirm' => "customers#confirm", as: 'confirm' #退会確認ページ
       patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw' #退会処理
     end

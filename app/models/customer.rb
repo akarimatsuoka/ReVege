@@ -26,8 +26,9 @@ class Customer < ApplicationRecord
 
   has_many :bookmarks, dependent: :destroy #ブックマークのことを指してる
   has_many :bookmarks_shops, through: :bookmarks, source: :shop #shopのテーブルのことを指してる
-  
-  
+  has_many :shops
+
+
   def bookmark?(shop) #ブックマークされたショップにこのショップは含まれてるか？
     bookmarks_shops.include?(shop)
     #Bookmark.where(customer_id: id, shop_id: s.id).exists?と同じ

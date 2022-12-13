@@ -1,0 +1,16 @@
+<div class="contaner py-5">
+  <div class="row">
+    <h4 class="col-sm-5 my-5 mx-auto text-center">いいね一覧</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <% @bookmark_shops.each do |shop| %>
+        <%#= link_to post_path(post) do %>
+          <%= bookmark.shop.name %>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
