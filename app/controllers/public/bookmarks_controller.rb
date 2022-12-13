@@ -1,14 +1,13 @@
 class Public::BookmarksController < ApplicationController
-  
+
   def create
     @shop = Shop.find(params[:shop_id]) #Shopモデルからshop_idを探してくる。
-    current_customer.bookmark(@shop) #ログイン中のユーザーと紐づけられたidを取ってくる。この時、customer.rbに定義したaliasを使用し、idの情報を保存する。
+    current_customer.bookmarks.create(shop_id: @shop.id) #ログインしてるユーザーが持ってるブックマークをcreateする
   end
 
   def destroy
-    @shop = current_customer.bookmarks.find(params[:shop_id]).shop
-    current_user.unbookmark(@shop)
-    # redirect_backはユーザーが直前にリクエストを送ったページに戻す
-    # fallback_location: デフォルトの設定
+    bookmark = current_customer.bookmarks.find_by(shop_id: params[:shop_id]) #ログインしてるユーザーが持ってるブックマークの中から1つ探してくる
+    @shop = bookmark.shop
+    bookmark.destroy
   end
 end

@@ -24,18 +24,11 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  has_many :bookmarks, dependent: :destroy
-  has_many :bookmarks_shops, through: :bookmarks, source: :shop
+  has_many :bookmarks, dependent: :destroy #ブックマークのことを指してる
+  has_many :bookmarks_shops, through: :bookmarks, source: :shop #shopのテーブルのことを指してる
   
-  def bookmark(shop)
-    bookmarks_shops << shop
-  end
-
-  def unbookmark(board)
-    bookmarks_shops.delete(shop)
-  end
-
-  def bookmark?(shop)
+  
+  def bookmark?(shop) #ブックマークされたショップにこのショップは含まれてるか？
     bookmarks_shops.include?(shop)
     #Bookmark.where(customer_id: id, shop_id: s.id).exists?と同じ
   end
