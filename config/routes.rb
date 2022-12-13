@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       resources :items
       resources :shops
       resources :customers
+      resources :orders
     end
 
 end
