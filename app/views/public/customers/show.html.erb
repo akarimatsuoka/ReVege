@@ -11,7 +11,12 @@
 
   <div class="row text-center">
     <div class="mb-3 d-flex mx-auto">
-      <%= link_to "編集する", customers_information_edit_path, class: "btn btn-lg btn-success" %>
+      <% if user.name != "guestuser" %>
+        <div class='row'>
+          <%= link_to "編集する", customers_information_edit_path, class: "btn btn-lg btn-success" %>
+        </div>
+      <% end %>
+      
     </div>
 
       <table class="table">

@@ -8,6 +8,12 @@ class Public::SessionsController < Devise::SessionsController
   def after_customer_sign_out_path_for
     about_path
   end
+  
+  def guest_sign_in
+    customer = Customer.guest
+    sign_in customer
+    redirect_to customer_path(customer), notice: 'guestuserでログインしました。'
+  end
 
   # GET /resource/sign_in
   # def new

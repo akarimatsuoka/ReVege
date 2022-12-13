@@ -22,6 +22,10 @@ Rails.application.routes.draw do
       patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw' #退会処理
     end
 
+    devise_scope :customer do
+      post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    end
+
     #public/orders
     scope module: :public do
       post '/orders/confirm' => "orders#confirm"

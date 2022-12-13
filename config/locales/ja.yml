@@ -6,7 +6,7 @@
           transfer: "銀行振込"
 
         order_status:
-        waiting_for_payment: "入金待ち"
-        payment_confirmation: "入金確認"
-        shipping_preparation: "発送準備中"
-        sent: "発送済み"
+          waiting_for_payment: "入金待ち"
+          payment_confirmation: "入金確認"
+          shipping_preparation: "発送準備中"
+          sent: "発送済み"
