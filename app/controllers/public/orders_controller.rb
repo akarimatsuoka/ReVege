@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
        # @order.name = ShippingAddress.find(params[:order][:address_id]).name
        # @order.postal_code = ShippingAddress.find(params[:order][:address_id]).postal_code
       #end
-    else params[:order][:select_address]=='2'
+    elsif params[:order][:select_address] == "2"
       @order.customer_id=current_customer.id
     end
   end
