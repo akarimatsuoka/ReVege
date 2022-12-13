@@ -37,8 +37,10 @@
           </tr>
 
           <tr>
-             <th><%= f.label "都道府県"%></th>
-             <td><%=f.select :prefecture, options_from_collection_for_select(Shop.prefecture_i18n_names, :last, :first), include_blank: '選択してください' %></td>
+            <th><%= f.label "都道府県"%></th>
+            <td><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %></td>
+            <!--下記はenumを使用した時の書き方-->
+            <%#=f.select :prefecture, options_from_collection_for_select(Shop.prefecture_i18n_names, :last, :first), include_blank: '選択してください' %>
           </tr>
 
           <tr>
