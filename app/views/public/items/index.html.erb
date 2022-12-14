@@ -8,15 +8,18 @@
         <%= f.collection_select :shop_prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %>
         <%= f.hidden_field :genre_id, value: (params[:q])? params[:q][:genre_id] : params[:genre_id] %>
         <!--検索ボタンが押されててジャンルがある、もしくはジャンル検索から来たか、どちらでもなければvalueは空白でページでは商品一覧が出る-->
-        <%= f.submit "検索" %>
+        <button class="btn btn-dark btn-circle m-1">
+          <i class="fa fa-search">
+            <%= f.submit %>
+          </i>
+        </button>
       <% end %>
     </div>
   </div>
 
  <div class="row d-flex mt-5 ">
     <div class="col-2">
-      
-          <%= render "public/items/genre_search", genres: @genres %>
+      <%= render "public/items/genre_search", genres: @genres %>
     </div>
 
     <div class="col-1"></div>
