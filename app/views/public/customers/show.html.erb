@@ -14,6 +14,7 @@
       <% if @customer.email != "guest@example.com" %>
         <div class='row'>
           <%= link_to "編集する", customers_information_edit_path, class: "btn btn-lg btn-success" %>
+          <%= link_to "お気に入りショップ", bookmark_path, class: "btn btn-lg btn-success" %>
         </div>
       <% end %>
     </div>

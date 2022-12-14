@@ -1,13 +1,38 @@
-<div class="contaner py-5">
+<div class="container">
   <div class="row">
-    <h4 class="col-sm-5 my-5 mx-auto text-center">いいね一覧</h4>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <% @bookmark_shops.each do |shop| %>
-          <%= shop.name %>
-      <% end %>
+    <div class="col">
+      <h4 class="m-4 d-flex justify-content-between font-weight-bold">いいね一覧</h4>
     </div>
+    
+    <table class='table table-inverse text-center'>
+        <thead>
+          <tr>
+            <th>ショップ</th>
+            <th>住所</th>
+            <th>電話番号</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% @bookmark_shops.each do |shop| %>
+            <tr>
+              <td>
+                <%= link_to shop_path(shop) do %>
+                  <%= image_tag shop.image, size: "50x50" %>&nbsp;<%= shop.name %>
+                <% end %>
+              </td>
+              <td>
+                〒<%= shop.postal_code %><br>
+                <%= shop.prefecture %><%= shop.address %>
+              </td>
+              <td><%= shop.phone_number%></td>
+              <td>
+                <span id="bookmark_button_<%= shop.id %>"><%= render 'public/bookmarks/bookmark_button', shop: shop %></span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
   </div>
 </div>

@@ -25,11 +25,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def bookmark
-    #@customer = current_customer
-    #bookmark = Bookmark.where(customer_id: @customer.id).pluck(:shop_id) 
     bookmark = current_customer.bookmarks.pluck(:shop_id) #Bookmarkモデルの中でカスタマーidを見つけてきて、カスタマーidに紐づいてるshop_idを取得
     @bookmark_shops = Shop.find(bookmark)
-    #@bookmark_shops = Bookmark.where(customer_id: @customer.id).shop
   end
 
   private
