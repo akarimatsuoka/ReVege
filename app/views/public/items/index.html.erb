@@ -1,16 +1,43 @@
 <div class="container">
-  <div class="row my-5 py-5">
+  <div class="row my-4 py-2">
     <div class="col-md-8 offset-md-1">
       <%= search_form_for @search, url: items_path do |f| %>
         <!--name_contは、あいまい検索を指定-->
-        <%= f.search_field :name_cont, placeholder: "キーワードから探す" %>
+        <%= f.search_field :name_cont, placeholder: "キーワードから商品を探す", size: "25x5" %>
         <!--ransackを利用する時のカラム。_eqは「イコール」の略-->
-        <%= f.collection_select :shop_prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %> 
+        <%= f.collection_select :shop_prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %>
+        <%= f.hidden_field :genre_id, value: (params[:q])? params[:q][:genre_id] : params[:genre_id] %>
+        <!--検索ボタンが押されててジャンルがある、もしくはジャンル検索から来たか、どちらでもなければvalueは空白でページでは商品一覧が出る-->
         <%= f.submit "検索" %>
       <% end %>
+    </div>
+  </div>
 
+ <div class="row d-flex mt-5 ">
+    <div class="col-2">
+      
+          <%= render "public/items/genre_search", genres: @genres %>
+    </div>
+
+    <div class="col-1"></div>
+    <div class="col-8">
       <div class="d-flex flex-wrap">
-        <h3><strong>商品一覧</strong></h3>
+        <h3><strong>
+          <% if @genre.present? %>
+            <%= @genre.name %>
+          <% end %>
+
+          <% if params[:q].present? %>
+            <%= params[:q][:name_cont] %>
+          <% end %>
+
+          <% if @genre.present? || params[:q].present? %>
+          <!--どちらかが存在する、もしくはどちらも存在する場合-->
+            の検索結果
+          <% else %>
+            商品一覧
+          <% end %>
+        </strong></h3>
           <div>(全<%= @items.count %>件)</div>
       </div>
 
@@ -20,8 +47,9 @@
             <%= link_to item_path(item) do %>
               <%= image_tag item.image, size: "150x150" %>
             <% end %>
-            <p><strong><%= link_to item.name, item_path(item), class: "font-weight-bold"%></strong>/<%= item.shop.name %></p>
-            <p><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
+            <div><strong><%= link_to item.name, item_path(item), class: "font-weight-bold"%></strong></div>
+            <div>（<%= item.shop.name %>）</div>
+            <div><strong>¥<%= item.price.to_s(:delimited) %></strong></div>
           </div>
         <% end %>
       </div>

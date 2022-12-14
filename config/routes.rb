@@ -39,7 +39,9 @@ Rails.application.routes.draw do
       delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all" #「resources:cart_items」の上にdestroy_allを持ってきたらidがつかない
       resources :cart_items, only: [:index,:update,:destroy,:create]
       resources :shipping_addresses
+      get '/items/searches'  =>  'items#searches', as: 'searches'
       resources :items
+      resources :genres, only: [:show]
       resources :shops do
         resource :bookmarks, only: %i[create destroy]
       end

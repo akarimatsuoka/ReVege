@@ -19,17 +19,17 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer=current_customer
-    @customer.update(is_deleted: true)
+    current_customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
 
   def bookmark
-    @customer = current_customer
-    bookmark = Bookmark.where(customer_id: @customer.id).pluck(shop_id) #Bookmarkモデルの中の?
-    
+    #@customer = current_customer
+    #bookmark = Bookmark.where(customer_id: @customer.id).pluck(:shop_id) 
+    bookmark = current_customer.bookmarks.pluck(:shop_id) #Bookmarkモデルの中でカスタマーidを見つけてきて、カスタマーidに紐づいてるshop_idを取得
     @bookmark_shops = Shop.find(bookmark)
+    #@bookmark_shops = Bookmark.where(customer_id: @customer.id).shop
   end
 
   private
