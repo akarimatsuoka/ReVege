@@ -14,9 +14,11 @@
         <% bookmark_shops.each do |shop| %>
           <tr>
             <td>
-              <%= link_to shop_path(shop) do %>
-                <%= image_tag shop.image, size: "50x50" %>&nbsp;<%= shop.name %>
-              <% end %>
+              <div class="picture">
+                <%= link_to shop_path(shop) do %>
+                  <%= image_tag shop.image, size: "55x55" %>&nbsp;<%= shop.name %>
+                <% end %>
+              </div>
             </td>
             <td>
               〒<%= shop.postal_code %><br>
