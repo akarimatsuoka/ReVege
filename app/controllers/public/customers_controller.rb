@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer=current_customer
+    bookmark = current_customer.bookmarks.pluck(:shop_id) #Bookmarkモデルの中でカスタマーidを見つけてきて、カスタマーidに紐づいてるshop_idを取得
+    @bookmark_shops = Shop.find(bookmark)
   end
 
   def edit

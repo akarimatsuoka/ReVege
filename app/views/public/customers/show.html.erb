@@ -5,77 +5,76 @@
 
       <div class="row">
         <div class="col">
-          <h2 class="m-4 text-center font-weight-bold">マイページ</h2>
+          <h2 class="m-4 font-weight-bold">マイページ</h2>
         </div>
       </div>
 
-  <div class="row text-center">
-    <div class="mb-3 d-flex mx-auto">
-      <% if @customer.email != "guest@example.com" %>
-        <div class='col'>
-          <%= link_to "編集する", customers_information_edit_path, class: "btn btn-lg btn-success" %>
-        </div>
-      <% end %>
+    <div class="row">
+      <div class="col-3">
+        <table class="table", style="font-size: 13px;">
+          <thead class="table-secondary">
+            <tr>
+              <th><%= @customer.first_name %>&nbsp;さま<br>
+              こんにちは！</th>
+              <td><% if @customer.email != "guest@example.com" %>
+              <div class='col'>
+                <%= link_to "登録情報変更", customers_information_edit_path, class: "btn btn-lg btn-dark btn-sm" %>
+              </div>
+            <% end %></td>
+            </tr>
+          </thead>
 
-      <div class='row'>
-        <%= link_to bookmark_path, class: "btn btn-lg btn-success" do %>
-        <i class="fas fa-clipboard-list"></i>お気に入りショップ
-        <% end %>
+          <tbody>
+            <tr>
+              <th>氏名</th>
+              <td>
+                <%= @customer.last_name %>
+                <%= @customer.first_name %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>カナ</th>
+              <td>
+                <%= @customer.last_name_kana %>
+                <%= @customer.first_name_kana %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @customer.postal_code %></td>
+            </tr>
+
+            <tr>
+              <th>住所</th>
+              <td><%= @customer.address %></td>
+            </tr>
+
+            <tr>
+              <th>電話番号</th>
+              <td>
+                <%= @customer.phone_number %>
+              </td>
+            </tr>
+
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @customer.email %></td>
+            </tr>
+
+            <tr>
+              <th>配送先</th>
+              <td><%= link_to "一覧ページへ", shipping_addresses_path, class: "btn btn-primary btn-sm" %></td>
+            </tr>
+
+            <tr>
+              <th>注文履歴</th>
+              <td><%= link_to "一覧ページへ", orders_path, class: "btn btn-primary btn-sm" %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <%= render 'public/customers/bookmark', bookmark_shops: @bookmark_shops %>
     </div>
-
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>氏名</th>
-            <td>
-              <%= @customer.last_name %>
-              <%= @customer.first_name %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>カナ</th>
-            <td>
-              <%= @customer.last_name_kana %>
-              <%= @customer.first_name_kana %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>郵便番号</th>
-            <td><%= @customer.postal_code %></td>
-          </tr>
-
-          <tr>
-            <th>住所</th>
-            <td><%= @customer.address %></td>
-          </tr>
-
-          <tr>
-            <th>電話番号</th>
-            <td>
-              <%= @customer.phone_number %>
-            </td>
-          </tr>
-
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @customer.email %></td>
-          </tr>
-
-        </tbody>
-      </table>
-  </div>
-
-  <div class="row mb-3">
-      <div class="col offset-1">
-        <strong>配送先</strong>
-         <%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary" %>
-      </div>
-
-      <div class="col offset-1">
-        <strong>注文履歴</strong>
-         <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
-      </div>
-  </div>
