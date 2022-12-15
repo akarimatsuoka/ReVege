@@ -1,31 +1,23 @@
 <div class="container py-5">
-   <div class="row">
+  <div class="row">
       <div class="col-12">
          <h4 class="m-4 pb-3 text-center font-weight-bold">ジャンル登録/一覧</h4>
       </div>
-   </div>
+  </div>
 
-
-
-   <div class="row d-flex justify-content-center">
-     <div class="col-6">
-     <table class="table text-center" style="color:white;">
-      <tbody>
-        <%= form_with model:@genre, url:admin_genres_path, method: :post do |f| %>
-          <tr>
-            <td>
-              ジャンル名
-            </td>
-            <td>
-              <%= f.text_field :name %>
-            </td>
-            <td>
-              <%= f.submit '新規登録', class: "btn btn-success" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <%= form_with model:@genre, url:admin_genres_path, method: :post do |f| %>
+        <table class="table text-center">
+          <tbody>
+            <tr>
+              <td>ジャンル名</td>
+              <td><%= f.text_field :name %></td>
+              <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
    </div>
   </div>
 
