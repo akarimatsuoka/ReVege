@@ -13,7 +13,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="ml-5" href="/"><%=image_tag "header3.png", size:"170x120" %></a>
+            <a class="ml-5" href="/"><%=image_tag "header3.png", size:"140x90" %></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -57,20 +57,20 @@
                    <!--以下はログインしてない場合の表示-->
                    <% else %>
                       <li class="mr-2">
-                       <%=link_to about_path, class:'btn btn-outline-secondary rounded-pill' do %>
-                         <i class="fas fa-question mr-2"></i>ABOUT US
-                       <%end%>
-                      </li>
-
-                      <li class="mr-2">
-                       <%=link_to items_path, class:'btn btn-outline-secondary rounded-pill' do %>
-                         <i class="fas fa-seedling mr-2"></i>商品一覧
-                       <%end%>
-                      </li>
-
-                      <li class="mr-2">
-                       <%=link_to new_customer_session_path, class:'btn btn-primary rounded-pill' do %>
+                       <%=link_to new_customer_session_path, class:'btn btn-primary btn-sm rounded-pill' do %>
                         ログイン|会員登録
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to about_path, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                         <i class="fas fa-question mr-2"></i>Revegeとは
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to items_path, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                         <i class="fas fa-seedling mr-2"></i>商品一覧
                        <%end%>
                       </li>
                    <%end%>
