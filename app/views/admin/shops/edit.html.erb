@@ -14,7 +14,7 @@
 
 <div class="row d-flex justify-content-center">
   <%= form_with model: @shop, url: admin_shop_path, method: :patch do |f| %>
-   <div class"col-md-6">
+    <div class"col-md-6">
       <table class="table text-center">
         <tbody>
             <tr>
@@ -39,7 +39,7 @@
 
             <tr>
               <th><%= f.label "都道府県" %></th>
-              <td><%=f.select :prefecture, options_from_collection_for_select(Shop.prefecture_i18n_names, :last, :first) %></td>
+              <td><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, { include_blank: 'ショップの所在地' } %></td>
             </tr>
 
             <tr>
@@ -53,9 +53,10 @@
             </tr>
         </tbody>
       </table>
-   </div>
-   <div class="row pb-5 d-flex justify-content-center">
+    </div>
+
+    <div class="row pb-5 d-flex justify-content-center">
         <%= f.submit "変更を保存", class: 'btn btn-success' %>
     </div>
-    <% end %>
+  <% end %>
 </div>
