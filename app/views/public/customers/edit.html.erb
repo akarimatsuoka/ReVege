@@ -13,7 +13,7 @@
 
   <div class="row d-flex justify-content-center">
     <%= form_with model: @customer, url: information_path, method: :patch do |f| %>
-      <table class="table table-striped text-center">
+      <table class="table table-bordered text-center">
         <tr>
           <th>名前（姓名）</th>
           <td>
@@ -49,12 +49,10 @@
           <th><%= f.label "電話番号" %></th>
           <td><%= f.text_field :phone_number %></td>
         </tr>
-
-        <tr>
-          <td><%= f.submit "編集内容を保存", class: "btn btn-success"%></td>
-          <td><%= link_to "退会する", confirm_path, class: 'btn btn-danger'%></td>
-        </tr>
       </table>
+        <%= f.submit "変更内容を保存する", class: "btn btn-outline-dark btn-sm "%>
+      
+        <%= link_to "退会する", confirm_path, class: 'btn btn-danger btn-sm'%>
     <% end %>
   </div>
 </div>
