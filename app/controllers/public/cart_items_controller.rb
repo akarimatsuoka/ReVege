@@ -5,7 +5,11 @@ class Public::CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items.all
     @total = 0
-    @postage = 600
+    if @cart_items.present?
+      @postage = 600
+    else
+      @postage=0
+    end
   end
 
   def create
