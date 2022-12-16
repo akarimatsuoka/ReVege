@@ -30,7 +30,7 @@
                  <td><%= f.text_field :name,placeholder: "山田太郎"%></td>
             </tr>
           </table>
-              <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+              <%= f.submit "新規登録", class: 'btn btn-outline-success rounded-0' %>
         <% end %>
     </div>
 
@@ -53,8 +53,8 @@
               <td><%= shipment.address %></td>
               <td><%= shipment.name %></td>
               <td>
-                <%=link_to "編集する", edit_shipping_address_path(shipment), class:"btn btn-sm btn-success" %>
-                <%=link_to "削除する", shipping_address_path(shipment), data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger", method: :delete %>
+                <%=link_to "編集する", edit_shipping_address_path(shipment), class:"btn btn-sm btn-outline-success rounded-0" %>
+                <%=link_to "削除する", shipping_address_path(shipment), data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-outline-danger rounded-0", method: :delete %>
               </td>
             </tr>
           <% end %>

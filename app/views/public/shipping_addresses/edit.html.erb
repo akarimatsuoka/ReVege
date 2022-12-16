@@ -20,12 +20,12 @@
           <table class="table table-bordered" style="text-align:center">
             <tr>
               <th class="table-secondary"><%= f.label "郵便番号(ハイフンなし)" %></th>
-              <td><%= f.text_field :postal_code %></td>
+              <td>〒<%= f.text_field :postal_code %></td>
             </tr>
 
             <tr>
               <th class="table-secondary"><%= f.label "住所" %></th>
-              <td><%= f.text_field :address %></td>
+              <td><%= f.text_field :address, size:"40x5" %></td>
             </tr>
 
             <tr>
@@ -36,7 +36,7 @@
         </div>
 
         <div class="col pt-3 d-flex justify-content-center">
-          <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
+          <%= f.submit "変更内容を保存する", class: 'btn btn-outline-dark rounded-0' %>
         </div>
       <% end %>
     </div>
