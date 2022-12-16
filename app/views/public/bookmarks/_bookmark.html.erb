@@ -1,3 +1,5 @@
 <%= link_to shop_bookmarks_path(shop.id), id: "js-bookmark-button-for-shop-#{shop.id}", method: :post, remote: :true do %>
-  <i class="far fa-heart"></i>お気に入りショップに追加する
+  <button type="button" class="btn btn-light rounded-circle p-0" style="width:2.5rem;height:2.5rem; border-color: #ccc4b4; font-size:17px;">
+    <i class="far fa-heart"></i>
+  </button>
 <% end%>

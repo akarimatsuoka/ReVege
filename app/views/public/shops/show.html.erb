@@ -1,43 +1,57 @@
-<div class="container py-5">
+<div class="container py-3">
     <div class="row">
-      <div class="col-12">
-         <h4 class="m-4 pb-2 text-center font-weight-bold">ショップ詳細</h4>
+      <div class="col-md-6 mx-auto mb-1", style="color: #363e38; font-family: 'Noto Sans JP', sans-serif;">
+        <h4><strong><i class="fas fa-store"></i><%= @shop.name %></strong>
+          <span id="bookmark_button_<%= @shop.id %>"><%= render 'public/bookmarks/bookmark_button', shop: @shop %></span>
+        </h4>
       </div>
     </div>
 
-      <div class="row py-1 pb-3 d-flex justify-content-center">
-        <div class="col-md-8 offset-md-1">
-          <div class="d-flex flex-row">
-            <div style="margin-right: 10px;"><%= image_tag @shop.image, size: "300x300" %></div>
-              <table class="table table-striped"style="text-align: center;">
-                <tbody>
+      <div class="row">
+            <div class="col-md-6 mx-auto mt-2 mb-2">
+              <div class="picture">
+                <%= image_tag @shop.image, size: "400x300" %>
+              </div>
+            </div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-6 mx-auto mt-2 mb-5">
+              <table class="introduction", style="font-size: 16px; color: #666;">
+                <td><%= @shop.introduction %></td>
+              </table>
+            </div>
+      </div>
+
+
+      <div class="row">
+            <div class="col-md-6 mx-auto mt-2 mb-5 p-3", style="border: solid #c4c4ac;">
+
+              <table class="shop", style="font-size: 13px;">
+                 <tr>
+                   <th>店舗情報</th>
+                 </tr>
+
                   <tr>
-                    <th>
-                      <h3><strong><%= @shop.name %></strong></h3>
-                      <span id="bookmark_button_<%= @shop.id %>"><%= render 'public/bookmarks/bookmark_button', shop: @shop %></span>
-                    </th>
+                    <td class="pt-2">
+                      <u><i class="fas fa-store"></i><%= @shop.name %></u>
+                    </td>
                   </tr>
 
                   <tr>
-                    <th><%= @shop.introduction %></th>
-                  </tr>
-
-                  <tr>
-                    <th>
+                    <td class="pt-2">
                       〒<%= @shop.postal_code %><br>
                       <%= @shop.prefecture %><%= @shop.address %>
-                    </th>
+                    </td>
                   </tr>
 
                   <tr>
-                    <th><%= @shop.phone_number %></th>
+                    <td class="pt-2">TEL:<%= @shop.phone_number %></th>
                   </tr>
-                </tbody>
               </table>
-          </div>
+
+                </div>
+            </div>
+
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 

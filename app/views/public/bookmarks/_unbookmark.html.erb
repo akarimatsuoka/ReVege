@@ -1,3 +1,5 @@
 <%= link_to shop_bookmarks_path(shop.id), id: "js-bookmark-button-for-shop-#{shop.id}", method: :delete, remote: :true do %>
-  <i class="fas fa-heart"></i>お気に入りショップから削除する
+  <button type="button" class="btn btn-light rounded-circle p-0" style="width:2.5rem;height:2.5rem; color: #ec9c8c; border-color: #ec9c8c; font-size:17px;">
+    <i class="fas fa-heart"></i>
+  </button>
 <% end %>

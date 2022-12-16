@@ -65,12 +65,20 @@
 
             <tr>
               <th>配送先</th>
-              <td><%= link_to "一覧ページへ", shipping_addresses_path, class: "btn btn-primary btn-sm" %></td>
+              <td>
+                <%= link_to shipping_addresses_path, class: "btn btn-dark btn-sm" do%>
+                  <i class="fas fa-shipping-fast mr-2"></i>一覧ページへ
+                <% end %>
+              </td>
             </tr>
 
             <tr>
               <th>注文履歴</th>
-              <td><%= link_to "一覧ページへ", orders_path, class: "btn btn-primary btn-sm" %></td>
+              <td>
+                <%= link_to orders_path, class: "btn btn-dark btn-sm" do%>
+                  <i class="fas fa-shopping-basket mr-2"></i>一覧ページへ
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>
