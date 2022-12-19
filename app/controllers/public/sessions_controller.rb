@@ -5,14 +5,6 @@ class Public::SessionsController < Devise::SessionsController
 
   before_action :customer_state, only: [:create]
 
-  def after_customer_sign_out_path_for
-    about_path
-  end
-
-  def after_customer_sign_in_path_for(resource)
-    my_page_path(customer)
-  end
-
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
@@ -49,5 +41,15 @@ class Public::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted #【処理2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
         redirect_to new_customer_registration_path #退会済みの時のリダイレクト先
     end
+  end
+
+  private
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
+  def after_sign_in_path_for(resource)
+    my_page_path(resource)
   end
 end
