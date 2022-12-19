@@ -1,6 +1,9 @@
 <div class='container py-5'>
   <div class="row">
-     <h4 class="col mb-5 mt-3 text-center font-weight-bold">商品詳細</h4>
+    <div class="col mb-3 mt-3 text-center">
+      <h4 class="font-weight-bold">商品詳細</h4>
+      <div class="flash text-center"><%= flash[:notice] %></div>
+    </div>
 
         <div class="col-lg-10 offset-2 d-flex justify-content-start">
           <%= image_tag @item.image, size: "300x300" %>

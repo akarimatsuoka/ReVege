@@ -1,8 +1,21 @@
 <div class="container py-5">
   <div class="row">
+    <h4 class="m-4 pb-3 text-center font-weight-bold">ジャンル登録 / 一覧</h4>
       <div class="col-12">
-         <h4 class="m-4 pb-3 text-center font-weight-bold">ジャンル登録/一覧</h4>
+          <div class="flash text-center">
+            <%= flash[:notice] %>
+          </div>
+
+          <% if @genre.errors.any? %>
+            <%= @genre.errors.count %>件のエラーが発生しました
+              <ul>
+                <% @genre.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
       </div>
+
   </div>
 
   <div class="row d-flex justify-content-center">

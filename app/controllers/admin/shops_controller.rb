@@ -8,6 +8,7 @@ class Admin::ShopsController < ApplicationController
   def create
     @shop=Shop.new(shop_params)
     if @shop.save
+      flash[:notice] = "ショップの新規登録が完了しました！"
       redirect_to admin_shops_path(@shop.id)
     else
       render :new
@@ -25,6 +26,7 @@ class Admin::ShopsController < ApplicationController
   def update
     @shop=Shop.find(params[:id])
     if @shop.update(shop_params)
+      flash[:notice] = "ショップの編集内容を保存しました！"
       redirect_to admin_shops_path
     else
       render "edit"

@@ -1,3 +1,7 @@
+<div class="flash">
+  <%= flash[:notice] %>
+</div>
+
 <div class="container">
   <div class="main-visual">
     <div class="main-visual-content">
@@ -6,6 +10,68 @@
           <p class="main-visual-text">新鮮でおいしい野菜や果物を</p>
           <p class="main-visual-text1">生産者から直接お届け</p>
         </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3 class="col-12 text-center pt-5 my-5", style="font-family: 'arial black'">Revegeとは</h3>
+      <div class="col-md-6 mx-auto mt-2 mb-5", style="color: #666;">
+        ReVege（リベジ）へようこそ。<br>
+        ReVegeは通常は廃棄してしまうような新鮮な野菜や果物、<br>
+        また、そんな食材たちをリメイクした商品を取り扱う販売サイトです。<br>
+        <br>
+        日本は世界的にみてフードロスが多い国と言われています。<br>
+        そんな問題がある中、私たちには何ができるでしょうか。<br>
+        自分にできる範囲で、小さなことから。<br>
+        無駄なく食材を食べることが、誰かの未来のためになります。<br>
+        Revegeでは、農家さんの思いがこもった食材を<br>
+        無駄なく消費者のみなさんへとお届けします。<br>
+      </div>
+  </div>
+
+  <div class="row">
+    <h3 class="col-12 text-center mt-4 mb-5", style="font-family: 'arial black'">Revegeでできること</h3>
+
+      <div class="border-bottom color: #f1f1f1;">
+        <div class="row">
+            <div class="col-1 mx-auto mt-2 mb-5">
+              <div class="picture">
+                <%= image_tag '農家と野菜', size:"300x230" %>
+              </div>
+            </div>
+            <div class="col-4 mx-auto">
+              <h5 class="mt-4 mb-3"><strong>全国の農家さんから<br>果物や野菜のお取り寄せができる</strong></h5><br>
+                <div class="text1", style="color: #666">
+                  食べてみたかった地域ごとの特産物や<br>旬の野菜。<br>
+                  このサイトを通して、自分が住んでいる地域以外の野菜や果物をお取り寄せしてみてはいかがでしょうか。
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="border-bottom mb-5 color: #f1f1f1;">
+    <div class="row d-flex justify-content-center">
+
+      <div class="offset-1"></div>
+
+      <div class="col-5 mx-auto">
+        <h5 class="text-center mt-5 mb-3"><strong>食品ロスの削減</strong></h5><br>
+          <div class="text1", style="color: #666">
+            色や形、大きさが規格に満たしていない野菜や果物のことを「規格外野菜」と呼びます。<br>
+            規格外野菜は、市場に出回る前に廃棄処分されることが多く、「隠れフードロス」とも言われています。<br>
+            しかし実は規格外野菜の多くは見た目の問題であるため正規品と味自体は変わらないケースが大半です。<br>
+            Revegeでは、そんな規格外野菜を積極的に扱っています。<br>
+            食材をお取り寄せすることで食品ロスの削減に貢献することができます。
+          </div>
+      </div>
+
+      <div class="col-6 mt-5 mb-5 pt-5 mx-auto">
+        <div class="picture">
+          <%= image_tag 'いちごハウス', size:"300x250" %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

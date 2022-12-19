@@ -1,9 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="m-4 d-flex justify-content-between font-weight-bold">ショップ一覧
-        <%=link_to "ショップを追加する", new_admin_shop_path, class: "btn btn-warning rounded-pill" %></h4>
+      <h4 class="m-4 d-flex justify-content-between font-weight-bold">
+        ショップ一覧
+        <%=link_to "ショップを追加する", new_admin_shop_path, class: "btn btn-warning rounded-pill" %>
+      </h4>
+      <div class="flash"><%= flash[:notice] %></div>
     </div>
+
       <table class='table table-inverse text-center'>
         <thead>
           <tr>
