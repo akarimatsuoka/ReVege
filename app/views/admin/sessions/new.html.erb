@@ -1,7 +1,9 @@
 <div class="container py-5">
-     <div class="row">
-       <h4 class="col m-4 text-center font-weight-bold">管理者ログイン</h4>
-     </div>
+  <div class="row">
+    <div class="col">
+      <h3 class="m-4 font-weight-bold">管理者ログイン</h3>
+    </div>
+  </div>
 
     <div class="row d-flex justify-content-center">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -9,18 +11,18 @@
             <%= f.label :email, "メールアドレス" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-        
+
           <div class="field text-center">
             <%= f.label :password, "パスワード" %><br />
             <%= f.password_field :password, autocomplete: "current-password" %>
           </div>
-        
-          
+
+
           <div class="actions text-center p-3">
             <%= f.submit "ログイン" %>
           </div>
         <% end %>
-  
+
         <%= render "admin/shared/links" %>
     </div>
 </div>
