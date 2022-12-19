@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
 
+#ゲストログインの情報
   def self.guest
     find_or_create_by!(last_name: 'guest' ,first_name: 'user' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
@@ -32,5 +33,11 @@ class Customer < ApplicationRecord
     bookmarks_shops.include?(shop)
     #Bookmark.where(customer_id: id, shop_id: s.id).exists?と同じ
   end
+
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :phone_number, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
 
 end
