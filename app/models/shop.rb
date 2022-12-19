@@ -2,7 +2,7 @@ class Shop < ApplicationRecord
   include JpPrefecture
 
   def name_display
-    id.to_s + ' ,' + name #idがintegerでnameがstringだからto_sをつけて数値変換してる
+    id.to_s + ' / ' + name #idがintegerでnameがstringだからto_sをつけて数値変換してる
   end
 
   has_one_attached :image

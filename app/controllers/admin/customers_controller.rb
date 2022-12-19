@@ -1,6 +1,8 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
-     @customers = Customer.all.order(created_at: "DESC") #created_at: "DESC"→最新のものから順に並べる
+     @customers = Customer.page(params[:page]).order(created_at: "DESC") #created_at: "DESC"→最新のものから順に並べる
   end
 
   def show

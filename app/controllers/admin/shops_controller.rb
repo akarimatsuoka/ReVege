@@ -1,4 +1,6 @@
 class Admin::ShopsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @shop=Shop.new
   end
@@ -13,7 +15,7 @@ class Admin::ShopsController < ApplicationController
   end
 
   def index
-     @shops=Shop.all
+     @shops=Shop.page(params[:page])
   end
 
   def edit
