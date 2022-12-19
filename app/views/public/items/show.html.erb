@@ -35,7 +35,7 @@
                 <th>
                   <ショップ情報><br>
                     <div class="picture">
-                      <%= link_to shop_path(@item.shop) do %>
+                      <%= link_to shop_path(@item.shop), class: "text-info" do %>
                         <%= image_tag @item.shop.image, size: "50x50" %>&nbsp;<%= @item.shop.name %>
                       <% end %>
                     </div>
