@@ -81,22 +81,6 @@ h4:after {
   right: 0;
 }
 
-h5:before, h5:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  display: inline-block;
-  width: 45px;
-  height: 1px;
-  background-color: #d5d5bc;
-}
-
-h5:before {
-  left:0;
-}
-h5:after {
-  right: 0;
-}
 
 @media screen and (max-width: 800px) {
   .visual-text {
