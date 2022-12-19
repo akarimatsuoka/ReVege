@@ -24,25 +24,25 @@
                    <!--以下会員がログインした場合の表示-->
                    <% if customer_signed_in? %>
                       <li class="mr-2">
-                       <%=link_to my_page_path, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                       <%=link_to my_page_path, class:'btn btn-malformation1' do %>
                          <i class="fas fa-house-user mr-2"></i>マイページ
                        <%end%>
                       </li>
 
                       <li class="mr-2">
-                       <%=link_to items_path, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                       <%=link_to items_path, class:'btn btn-malformation1' do %>
                          <i class="fas fa-seedling mr-2"></i>商品一覧
                        <%end%>
                       </li>
 
                       <li class="mr-2">
-                       <%=link_to cart_items_path, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                       <%=link_to cart_items_path, class:'btn btn-malformation1' do %>
                         <i class="fas fa-shopping-cart mr-2"></i>カート
                        <%end%>
                       </li>
 
-                      <li class="mr-2">
-                       <%=link_to destroy_customer_session_path, method: :delete, class:'btn btn-outline-secondary btn-sm rounded-pill' do %>
+                      <li class="mr-2 mt-5">
+                       <%=link_to destroy_customer_session_path, method: :delete, class:'text-secondary border-bottom' do %>
                          ログアウト
                        <%end%>
                       </li>
