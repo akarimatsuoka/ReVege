@@ -6,6 +6,9 @@ class Customer < ApplicationRecord
       customer.password = SecureRandom.urlsafe_base64
       customer.last_name = "guest"
       customer.first_name ="user"
+      customer.last_name_kana = "guest"
+      customer.first_name_kana ="user"
+      customer.email = "guest@example.com"
       customer.postal_code = "0000000"
       customer.address = "東京都xx区"
       customer.phone_number = "00000000000"
