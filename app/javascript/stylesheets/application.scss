@@ -19,19 +19,19 @@ footer {
 }
 
 .main-visual-content {
-  font-family: serif;
   margin-top: 25px;
   position: relative;
   img {
     width: 100%;
-    max-width: 800px;
+    // max-width: 800px;
   }
 }
 
 .visual-text {
+  font-family: serif;
   position: absolute;
-  top: 170px;
-  left: 85px;
+  top: 200px;
+  left: -60px;
   padding: 45px;
   background-color: rgba(187,195,206,0.45);
   color: white;
@@ -164,6 +164,7 @@ a.btn--circle i {
   transition: all .3s;
   letter-spacing: 0;
 }
+
 a.btn--circle:hover i {
   line-height: 55px;
 }
