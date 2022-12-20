@@ -19,17 +19,17 @@
         <div class="-flex align-items-center" >
           <table class="table table-bordered" style="text-align:center">
             <tr>
-              <th class="table-secondary"><%= f.label "郵便番号(ハイフンなし)" %></th>
+              <th style="background-color: #e8ecdb;"><%= f.label "郵便番号(ハイフンなし)" %></th>
               <td>〒<%= f.text_field :postal_code %></td>
             </tr>
 
             <tr>
-              <th class="table-secondary"><%= f.label "住所" %></th>
+              <th style="background-color: #e8ecdb;"><%= f.label "住所" %></th>
               <td><%= f.text_field :address, size:"40x5" %></td>
             </tr>
 
             <tr>
-              <th class="table-secondary"><%= f.label "宛名" %></th>
+              <th style="background-color: #e8ecdb;"><%= f.label "宛名" %></th>
               <td><%= f.text_field :name %></td>
             </tr>
           </table>

@@ -3,6 +3,14 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = current_customer
     @addresses = current_customer.shipping_addresses
+    @cart_items = current_customer.cart_items.all
+    @total = 0
+    if @cart_items.present?
+      @postage = 600
+    else
+      @postage=0
+    end
+    
   end
 
   def confirm

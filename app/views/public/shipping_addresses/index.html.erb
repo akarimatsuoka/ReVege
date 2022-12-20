@@ -15,23 +15,23 @@
   <div class="row">
     <div class="col-4">
       <h4 class="m-4 font-weight-bold"><strong>配送先新規登録</strong></h4>
-        <%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
-          <table class="table table-bordered">
-            <tr>
-                 <th class="table-secondary text-center"><%= f.label "郵便番号" %></th>
-                 <td><%= f.text_field :postal_code,placeholder: "0000000（ハイフンなし）", size:"25x5" %></td>
-            </tr>
-            <tr>
-                 <th class="table-secondary text-center"><%= f.label "住所" %></th>
-                 <td><%= f.text_field :address,placeholder: "東京都XX区XXXX町0-0", size:"25x5" %></td>
-            </tr>
-            <tr>
-                 <th class="table-secondary text-center"><%= f.label "宛名" %></th>
-                 <td><%= f.text_field :name,placeholder: "山田太郎"%></td>
-            </tr>
-          </table>
-              <%= f.submit "新規登録", class: 'btn btn-outline-success rounded-0' %>
-        <% end %>
+      <%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
+        <table class="table table-bordered">
+          <tr>
+            <th class="text-center", style="background-color: #e8ecdb;"><%= f.label "郵便番号" %></th>
+            <td><%= f.text_field :postal_code,placeholder: "0000000（ハイフンなし）", size:"25x5" %></td>
+          </tr>
+          <tr>
+            <th class="text-center", style="background-color: #e8ecdb;"><%= f.label "住所" %></th>
+            <td><%= f.text_field :address,placeholder: "東京都XX区XXXX町0-0", size:"25x5" %></td>
+          </tr>
+          <tr>
+            <th class="text-center", style="background-color: #e8ecdb;"><%= f.label "宛名" %></th>
+            <td><%= f.text_field :name,placeholder: "山田太郎"%></td>
+          </tr>
+        </table>
+        <%= f.submit "新規登録", class: 'btn btn-outline-dark rounded-0' %>
+      <% end %>
     </div>
 
     <div class="col-8">
@@ -40,7 +40,7 @@
           <%= flash[:notice] %>
         </div>
       <table class='table table-bordered mt-4'>
-        <thead class="table-secondary text-center">
+        <thead class="text-center", style="background-color: #e8ecdb;">
           <tr>
             <th>郵便番号</th>
             <th>住所</th>

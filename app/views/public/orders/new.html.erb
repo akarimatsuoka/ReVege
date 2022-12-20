@@ -1,8 +1,10 @@
-<div class="container py-4">
-    <h4 class="text-center my-4"><strong>注文情報入力</strong></h4>
-
-      <div>
-        <% if @order.errors.any? %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-4 mb-4">
+      <h4 class="font-weight-bold">ご注文情報入力</h4>
+    </div>
+    <div class="col-12">
+      <% if @order.errors.any? %>
           <%= @order.errors.count %>件のエラーが発生しました
           <ul>
             <% @order.errors.full_messages.each do |message| %>
@@ -16,76 +18,101 @@
             <% end %>
           </ul>
         <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @order, url:orders_confirm_path do |f| %>
+    　<div class="col-8">
+        <table class="table table-borderless", style="margin: auto;">
+          <tbody style="border-bottom: solid #c4c4ac; border-top: solid #c4c4ac;">
+            <tr>
+              <th><strong>支払い方法</strong></th>
+              <td class="border-bottom">
+              <!--下記はenumを使用している-->
+                <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+              </td>
+             </tr>
+            <tr>
+              <th></th>
+              <td>
+                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+              </td>
+            </tr>
+          </tbody>
+          <tbody style="border-bottom: solid #c4c4ac;">
+            <tr>
+              <th><strong>お届け先</strong></th>
+              <td class="border-bottom">
+                <%= f.radio_button :select_address, 0 %>ご自身の住所
+                <p><%= current_customer.address_display %></p>
+              </td>
+            </tr>
+  
+            <tr>
+              <th></th>
+              <td class="border-bottom">
+                <%= f.radio_button:select_address, 1 %>登録済み住所
+                <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
+              </td>
+            </tr>
+  
+            <tr>
+              <th></th>
+              <td>
+                <%= f.radio_button:select_address, 2 %>新しいお届け先
+                <table>
+                  <tr>
+                    <th><%= f.label "郵便番号" %></th>
+                    <td><%= f.text_field :postal_code,placeholder: "0000000(ハイフンなし)" %></td>
+                  </tr>
+  
+                  <tr>
+                    <th><%= f.label "住所" %></th>
+                    <td><%= f.text_field :address, placeholder: "東京都xx区xxx町0-0", size: "25x5"%></td>
+                  </tr>
+  
+                  <tr>
+                    <th><%= f.label "宛名" %></th>
+                    <td><%= f.text_field :name, placeholder: "山田太郎"%></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    　</div>
+
+      <div class="col-3 p-2", style="border: solid #c4c4ac;">
+        <table class="table table-borderless">
+          <tr class="text", style="font-size:15px; border-bottom: solid #c4c4ac;">
+            <th scope="row text-left">商品代金合計
+              <% @cart_items.each do |cart_item| %>
+                <% @total += cart_item.subtotal %>
+              <% end %>
+            </th>
+            <td class="text-right">￥<%= @total.to_s(:delimited) %></td>
+          </tr>
+
+          <tr style="font-size:15px; border-bottom: solid #c4c4ac;">
+            <th scope="row text-left">配送料</th>
+            <td class="text-right">￥<%= @postage %></td>
+          </tr>
+
+          <tr style="font-size:22px; border-bottom: solid #c4c4ac;">
+            <th scope="row text-left">合計金額</th>
+            <td class="text-right">￥<%= (@total + @postage).to_s(:delimited) %></td>
+          </tr>
+
+          <tr>
+            <th colspan="2">
+              <%= f.submit "レジへ進む", class: 'btn btn-dark btn-block' %>
+            </th>
+          </tr>
+        </table>
       </div>
-
-      <div class="row">
-        <div class="col">
-          <%= form_with model: @order, url:orders_confirm_path do |f| %>
-            <table class="table table-borderless" style="margin: auto;">
-              <tr>
-                <th style="vertical-align: middle; text-align: center;">
-                  <h5><strong>支払い方法</strong></h5>
-                </th>
-                <td>
-                  <!--下記はenumを使用している-->
-                  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-                  <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-                  <br>
-                  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                   <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-                </td>
-              </tr>
-
-              <tr>
-                <th style="vertical-align: middle;text-align: center;">
-                  <h5><strong>お届け先</strong></h5>
-                </th>
-                <td>
-                  <p><%= f.radio_button :select_address, 0 %>ご自身の住所</p>
-                  <p><%= current_customer.address_display %><p>
-                </td>
-              </tr>
-
-              <tr>
-                <th></th>
-                <td>
-                  <div class="mb-3">
-                    <p><%= f.radio_button:select_address, 1 %>登録済み住所</p>
-                    <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %> <br>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <th></th>
-                <td>
-                  <div class="mb-3">
-                    <p><%= f.radio_button:select_address, 2 %>新しいお届け先</p>
-                      <table>
-                        <tr>
-                          <th><%= f.label "郵便番号(ハイフンなし)" %></th>
-                          <td><%= f.text_field :postal_code,placeholder: "0000000" %></td>
-                        </tr>
-
-                        <tr>
-                          <th><%= f.label "住所" %></th>
-                          <td><%= f.text_field :address, placeholder: "東京都xx区xxx町0-0", size: "50x5"%></td>
-                        </tr>
-
-                        <tr>
-                          <th><%= f.label "宛名" %></th>
-                          <td><%= f.text_field :name, placeholder: "山田太郎"%></td>
-                        </tr>
-                      </table>
-                  </div>
-                </td>
-              </tr>
-            </table>
-
-            <div style="text-align:center;">
-              <%= f.submit "確認画面へ進む", class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+    <% end %>
+  </div>
 </div>
