@@ -41,7 +41,14 @@ ja:
         price: 商品価格
         genre_id: ジャンル
         shop_id: ショップ
-
+      shop:
+        image: ショップ画像
+        name: ショップ名
+        introduction: ショップ紹介文
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        address: 住所
+        phone_number: ショップ連絡先
   date:
     abbr_day_names:
     - 日

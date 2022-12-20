@@ -3,17 +3,27 @@
       <div class="col-12 m-4 pb-2 text-center">
          <h4 class="font-weight-bold">ジャンル編集</h4>
       </div>
+      <div class="col-12">
+        <% if @genre.errors.any? %>
+          <%= @genre.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
     </div>
-    
+
     <div class="row py-1 pb-3 d-flex justify-content-center">
       <%= form_with model: @genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
         <div class="col">
           <table class="table text-center">
        　    <tbody>
             　   <tr>
-             　    <td style="vertical-align: middle;" >ジャンル名</td>
-                  <td style="vertical-align: middle;"><%= f.text_field :name %></td>
-                  <td><%= f.submit '変更を保存', class: "btn btn-info" %></td>
+             　    <td><%= f.label :name %></td>
+                  <td><%= f.text_field :name %></td>
+                  <td><%= f.submit '変更を保存', class: "btn btn-info btn-sm" %></td>
                 </tr>
             </tbody>
           </table>
