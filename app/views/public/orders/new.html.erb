@@ -22,12 +22,12 @@
   </div>
 
   <div class="row">
-    <%= form_with model: @order, class: "row", url:orders_confirm_path do |f| %>
-    　<div class="col-8">
+    　<div class="col">
         <table class="table table-borderless", style="margin: auto;">
           <tbody style="border-bottom: solid #c4c4ac; border-top: solid #c4c4ac;">
+            <%= form_with model: @order, class: "row", url:orders_confirm_path do |f| %>
             <tr>
-              <th class="test"><strong>支払い方法</strong></th>
+              <th rowspan="2", width="150", style="vertical-align:middle"><strong>支払い方法</strong></th>
               <td class="border-bottom">
               <!--下記はenumを使用している-->
                 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -35,7 +35,6 @@
               </td>
              </tr>
             <tr>
-              <th></th>
               <td>
                 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
                 <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
@@ -44,7 +43,7 @@
           </tbody>
           <tbody style="border-bottom: solid #c4c4ac;">
             <tr>
-              <th></th>
+              <th rowspan="3", style="vertical-align:middle"><strong>お届け先</strong></th>
               <td class="border-bottom">
                 <%= f.radio_button :select_address, 0, checked: "checked" %>ご自身の住所
                 <p><%= current_customer.address_display %></p>
@@ -52,7 +51,6 @@
             </tr>
 
             <tr>
-              <th><strong>お届け先</strong></th>
               <td class="border-bottom">
                 <%= f.radio_button:select_address, 1 %>登録済み住所
                 <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
@@ -60,7 +58,6 @@
             </tr>
 
             <tr>
-              <th></th>
               <td>
                 <%= f.radio_button:select_address, 2 %>新しいお届け先
                 <table>
@@ -85,7 +82,7 @@
         </table>
     　</div>
 
-      <div class="col-3", style="border: solid #c4c4ac;">
+      <div class="col-3 offset-1 my-auto", style="border: solid #c4c4ac; height:300px">
         <table class="table table-borderless">
           <tr class="text", style="font-size:15px; border-bottom: solid #c4c4ac;">
             <th scope="row text-left">商品代金合計
