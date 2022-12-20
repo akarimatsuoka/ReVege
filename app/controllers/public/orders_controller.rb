@@ -38,6 +38,9 @@ class Public::OrdersController < ApplicationController
       #end
     elsif params[:order][:select_address] == "2"
       @order.customer_id=current_customer.id
+      if params[:order][:select_address] == nil
+        render :new
+      end
     end
   end
 
