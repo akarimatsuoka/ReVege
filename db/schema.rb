@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 2022_12_13_092908) do
   create_table "items", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.integer "shop_id", null: false
-    t.string "name", default: "", null: false
-    t.text "detail", default: "", null: false
+    t.string "name", null: false
+    t.text "detail", null: false
     t.integer "price", null: false
     t.boolean "status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -137,12 +137,12 @@ ActiveRecord::Schema.define(version: 2022_12_13_092908) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.text "introduction", default: "", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
     t.integer "postal_code", null: false
-    t.string "prefecture", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "phone_number", default: "", null: false
+    t.string "prefecture", null: false
+    t.string "address", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

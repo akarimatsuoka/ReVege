@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    # byebug
     @order=Order.new(order_params)
     @cart_items = current_customer.cart_items.all
     @postage = 600
