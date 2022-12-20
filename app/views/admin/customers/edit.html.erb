@@ -18,45 +18,45 @@
   <div class="row d-flex justify-content-center">
     <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
       <div class="col">
-        <table class="table table-striped text-center">
+        <table class="table table-bordered text-center">
    　      <tbody>
          　  <tr>
-         　　   <th>会員ID</th>
+         　　   <th class="table-secondary">会員ID</th>
          　　   <td><%= @customer.id %></td>
          　  </tr>
 
          　  <tr>
-         　　   <th>氏名</th>
+         　　   <th class="table-secondary">氏名</th>
          　　   <td><%= f.text_field :last_name %>&nbsp;<%= f.text_field :first_name %></td>
             </tr>
 
          　  <tr>
-         　　   <th>フリガナ</th>
+         　　   <th class="table-secondary">フリガナ</th>
          　　   <td><%= f.text_field :last_name_kana %>&nbsp;<%= f.text_field :first_name_kana %></td>
          　  </tr>
 
             <tr>
-         　　   <th>郵便番号</th>
+         　　   <th class="table-secondary">郵便番号</th>
          　　   <td><%= f.text_field :postal_code %></td>
          　  </tr>
 
          　  <tr>
-         　　   <th>住所</th>
-              <td><%= f.text_field :address %></td>
+         　　   <th class="table-secondary">住所</th>
+              <td><%= f.text_field :address, size: "35x5"%></td>
             </tr>
 
             <tr>
-              <th>電話番号</th>
+              <th class="table-secondary">電話番号</th>
               <td><%= f.text_field :phone_number %></td>
             </tr>
 
             <tr>
-              <th>メールアドレス</th>
+              <th class="table-secondary">メールアドレス</th>
               <td><%= f.email_field :email %></td>
             </tr>
 
             <tr>
-              <th>会員ステータス</th>
+              <th class="table-secondary">会員ステータス</th>
               <td>
                 <%= f.radio_button :is_deleted, :true %>
                 <%= f.label :is_deleted, "退会済", {value: :true, style: "display: inline-block;"} %>
