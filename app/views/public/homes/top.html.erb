@@ -4,9 +4,14 @@
 
 <div class="container pb-5">
   <div class="row">
-    <div class="col-12 mt-4">
-      <div class="main-visual-content text-center">
-        <%= image_tag 'orange2.jpg' %>
+    <div class="col-10 mt-4 mx-auto">
+      <div class="main-visual-content">
+        <ul class="slider">
+          <li><%= image_tag 'orange2.jpg' %></li>
+          <li><%= image_tag 'apple.jpg' %></li>
+          <li><%= image_tag 'carrot.jpg' %></li>
+          <li><%= image_tag 'jam.jpg' %></li>
+  			</ul>
         <div class="visual-text">
           <p class="main-visual-text">新鮮でおいしい野菜や果物を</p>
           <p class="main-visual-text1">生産者から直接お届け</p>
@@ -67,3 +72,17 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(function(){
+        $('.slider').slick({
+          fade: true,    // fedeオン
+          speed: 1500,   // 画像切り替えにかかる時間（ミリ秒）
+          autoplaySpeed: 3000,   // 自動スライド切り替え速度
+          arrows: false,         // 矢印表示・非表示
+          autoplay:true,//自動再生する
+          autoplaySpeed:3000,//自動再生するスピード 4秒
+          dots:true//ドット部分を表示する
+        });
+    });
+</script>
