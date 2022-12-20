@@ -17,13 +17,15 @@
         <table class="table", style="font-size: 13px;">
           <thead class="table-secondary">
             <tr>
-              <th><%= @customer.first_name %>&nbsp;さま<br>
-              こんにちは！</th>
-              <td><% if @customer.email != "guest@example.com" %>
-              <div class='col'>
-                <%= link_to "登録情報変更", customers_information_edit_path, class: "btn btn-lg btn-dark btn-sm" %>
-              </div>
-            <% end %></td>
+              <th></th>
+              <td>
+                こんにちは！<%= @customer.first_name %>&nbsp;様！
+                <% if @customer.email != "guest@example.com" %>
+                  <div class='col'>
+                    <%= link_to "登録情報変更", customers_information_edit_path, class: "btn btn-dark btn-sm" %>
+                  </div>
+                <% end %>
+              </td>
             </tr>
           </thead>
 
@@ -69,7 +71,7 @@
             <tr>
               <th>配送先</th>
               <td>
-                <%= link_to shipping_addresses_path, class: "btn btn-dark btn-sm" do%>
+                <%= link_to shipping_addresses_path, class: "btn btn-outline-dark btn-sm" do%>
                   <i class="fas fa-shipping-fast mr-2"></i>一覧ページへ
                 <% end %>
               </td>
@@ -78,7 +80,7 @@
             <tr>
               <th>注文履歴</th>
               <td>
-                <%= link_to orders_path, class: "btn btn-dark btn-sm" do%>
+                <%= link_to orders_path, class: "btn btn-outline-dark btn-sm" do%>
                   <i class="fas fa-shopping-basket mr-2"></i>一覧ページへ
                 <% end %>
               </td>
