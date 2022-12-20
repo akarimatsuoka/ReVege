@@ -1,16 +1,18 @@
 <div class="container my-3">
   <div class="row">
-    <h4 class=" font-weight-bold">マイページ編集</h4>
-      <div class="col">
-        <% if @customer.errors.any? %>
-          <%= @customer.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @customer.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+    <div class="col-12">
+      <h4 class=" font-weight-bold">マイページ編集</h4>
+    </div>
+    <div class="col-12">
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 
   <div class="row d-flex justify-content-center">

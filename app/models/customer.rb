@@ -34,6 +34,8 @@ class Customer < ApplicationRecord
     #Bookmark.where(customer_id: id, shop_id: s.id).exists?と同じ
   end
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
   validates :last_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :phone_number, presence: true
