@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :detail, presence: true
   validates :price, presence: true
+  validates :genre_id, presence: true
+  validates :shop_id, presence: true
 
   def with_tax_price
     (price*1.1).floor
