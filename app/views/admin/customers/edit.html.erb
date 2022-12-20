@@ -1,9 +1,19 @@
 <div class="container py-5">
   <div class="row">
-      <h4 class="col mt-3 text-center font-weight-bold"><%= @customer.last_name %><%= @customer.first_name %>さんの会員編集</h4>
+    <div class="col-12 mt-3 text-center">
+      <h4 class="font-weight-bold"><%= @customer.last_name %><%= @customer.first_name %>さんの会員編集</h4>
+    </div>
+    <div class="col-12">
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
-</div>
 
   <div class="row d-flex justify-content-center">
     <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
