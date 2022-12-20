@@ -1,5 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&family=BIZ+UDPGothic&family=Klee+One&family=Kosugi+Maru&family=Noto+Sans+JP&family=Noto+Serif+JP&family=Shippori+Mincho+B1&family=Zen+Maru+Gothic&display=swap');
+
 
 *{
   margin: 0;
@@ -167,4 +169,8 @@ a.btn--circle i {
 
 a.btn--circle:hover i {
   line-height: 55px;
+}
+
+body {
+ font-family: 'Noto Sans JP', sans-serif;
 }

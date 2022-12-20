@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mt-4 mb-4">
+    <div class="col-12 mt-4 mb-5">
       <h4 class="font-weight-bold">ご注文情報入力</h4>
     </div>
     <div class="col-12">
@@ -22,31 +22,17 @@
   </div>
 
   <div class="row">
+    <%= form_with model: @order, class: "row", url:orders_confirm_path do |f| %>
     　<div class="col">
         <table class="table table-borderless", style="margin: auto;">
           <tbody style="border-bottom: solid #c4c4ac; border-top: solid #c4c4ac;">
-            <%= form_with model: @order, class: "row", url:orders_confirm_path do |f| %>
-            <tr>
-              <th rowspan="2", width="150", style="vertical-align:middle"><strong>支払い方法</strong></th>
-              <td class="border-bottom">
-              <!--下記はenumを使用している-->
-                <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
-              </td>
-             </tr>
-            <tr>
-              <td>
-                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
-              </td>
-            </tr>
-          </tbody>
-          <tbody style="border-bottom: solid #c4c4ac;">
             <tr>
               <th rowspan="3", style="vertical-align:middle"><strong>お届け先</strong></th>
               <td class="border-bottom">
-                <%= f.radio_button :select_address, 0, checked: "checked" %>ご自身の住所
-                <p><%= current_customer.address_display %></p>
+                <%= f.radio_button :select_address, 0, checked: "checked" %>ご自身の住所<br>
+                〒<%= @customer.postal_code %>　<%= @customer.address %><br><%= @customer.last_name %><%= @customer.first_name %>
+                <%#= current_customer.address_display %>
+                <!--33行目は上の文で出しても良い。ddress_displayについてはcustomerモデルに記載-->
               </td>
             </tr>
 
@@ -63,12 +49,12 @@
                 <table>
                   <tr>
                     <th><%= f.label "郵便番号" %></th>
-                    <td><%= f.text_field :postal_code,placeholder: "0000000(ハイフンなし)" %></td>
+                    <td><%= f.text_field :postal_code,placeholder: "0000000(ハイフンなし)", size: "23x5" %></td>
                   </tr>
 
                   <tr>
                     <th><%= f.label "住所" %></th>
-                    <td><%= f.text_field :address, placeholder: "東京都xx区xxx町0-0", size: "25x5" %></td>
+                    <td><%= f.text_field :address, placeholder: "東京都xx区xxx町0-0", size: "28x5" %></td>
                   </tr>
 
                   <tr>
@@ -76,6 +62,23 @@
                     <td><%= f.text_field :name, placeholder: "山田太郎" %></td>
                   </tr>
                 </table>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody style="border-bottom: solid #c4c4ac;">
+            <tr>
+              <th rowspan="2", width="150", style="vertical-align:middle"><strong>支払い方法</strong></th>
+              <td class="border-bottom">
+              <!--下記はenumを使用している-->
+                <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+              </td>
+             </tr>
+            <tr>
+              <td>
+                <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+                <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
               </td>
             </tr>
           </tbody>

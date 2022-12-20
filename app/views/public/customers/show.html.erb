@@ -17,22 +17,21 @@
         <table class="table", style="font-size: 13px;">
           <thead class="table-secondary">
             <tr>
-              <th></th>
-              <td>
+              <th colspan="2", class="text-center">
                 こんにちは！<%= @customer.first_name %>&nbsp;様！
                 <% if @customer.email != "guest@example.com" %>
                   <div class='col'>
                     <%= link_to "登録情報変更", customers_information_edit_path, class: "btn btn-dark btn-sm" %>
                   </div>
                 <% end %>
-              </td>
+              </th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <th>氏名</th>
-              <td>
+              <th width="180">氏名</th>
+              <td width="200">
                 <%= @customer.last_name %>
                 <%= @customer.first_name %>
               </td>
@@ -69,21 +68,19 @@
             </tr>
 
             <tr>
-              <th>配送先</th>
-              <td>
+              <th colspan="2", class="text-center">
                 <%= link_to shipping_addresses_path, class: "btn btn-outline-dark btn-sm" do%>
-                  <i class="fas fa-shipping-fast mr-2"></i>一覧ページへ
+                  <i class="fas fa-shipping-fast mr-2"></i>配送先一覧ページへ
                 <% end %>
-              </td>
+              </th>
             </tr>
 
             <tr>
-              <th>注文履歴</th>
-              <td>
+              <th colspan="2", class="text-center">
                 <%= link_to orders_path, class: "btn btn-outline-dark btn-sm" do%>
-                  <i class="fas fa-shopping-basket mr-2"></i>一覧ページへ
+                  <i class="fas fa-shopping-basket mr-2"></i>注文履歴一覧へ
                 <% end %>
-              </td>
+              </th>
             </tr>
           </tbody>
         </table>

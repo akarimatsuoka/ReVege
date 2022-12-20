@@ -1,4 +1,7 @@
 class Public::OrdersController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
     @customer = current_customer
@@ -10,7 +13,7 @@ class Public::OrdersController < ApplicationController
     else
       @postage=0
     end
-    
+
   end
 
   def confirm
@@ -38,9 +41,30 @@ class Public::OrdersController < ApplicationController
       #end
     elsif params[:order][:select_address] == "2"
       @order.customer_id=current_customer.id
-      if params[:order][:select_address] == nil
+      @address_new = current_customer.shipping_addresses.new(shipping_address_params)
+      if @address_new.save
+        @order.address = @address_new.address
+        @order.name = @address_new.name
+        @order.postal_code = @address_new.postal_code
+      else
+        @cart_items = current_customer.cart_items.all
+        @total = 0
+        if @cart_items.present?
+          @postage = 600
+        else
+          @postage=0
+        end
         render :new
       end
+    else
+      @cart_items = current_customer.cart_items.all
+      @total = 0
+      if @cart_items.present?
+        @postage = 600
+      else
+        @postage=0
+      end
+      render :new
     end
   end
 
@@ -74,6 +98,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :price, :postage)
+  end
+  
+  def shipping_address_params
+  params.require(:order).permit(:name, :address, :postal_code)
   end
 
 end
