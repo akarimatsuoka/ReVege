@@ -9,9 +9,8 @@
     <div class="col-2">
       <%= render "public/items/genre_search", genres: @genres %>
     </div>
-
     <div class="col-1"></div>
-    <div class="col-8">
+    <div class="col-9">
       <div class="d-flex flex-wrap">
         <h3><strong>
           <% if @genre.present? %>
@@ -44,11 +43,7 @@
           </div>
         <% end %>
       </div>
-
-      <div class="d-flex justify-content-center">
-        <%= paginate @items %>
-      </div>
-      
+      <%= paginate @items %>
     </div>
   </div>
 </div>

@@ -27,17 +27,15 @@
 #   end
 # end
 
-# このカスタマー多分登録できてないよ（なんでだろうね）
 # Customer.create!(
 #   email: '6@6',
 #   password: '123456',
-#   customer.last_name = "test",
-#   customer.first_name ="test",
-#   customer.last_name_kana = "test(kana)",
-#   customer.first_name_kana ="test(kana)",
-#   customer.email = "6@6",
-#   customer.postal_code = "6666666",
-#   customer.address = "熊本県4丁目1番地",
-#   customer.phone_number = "07072872828",
+#   last_name: "test",
+#   first_name: "test",
+#   last_name_kana: "test(kana)",
+#   first_name_kana: "test(kana)",
+#   postal_code: "6666666",
+#   address: "熊本県4丁目1番地",
+#   phone_number: "07072872828"
 #   )
 
