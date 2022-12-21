@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex flex-wrap">
+        <% @item.each do |item| %>
+          <div style="margin-right: 10px;">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.image, size: "150x150" %>
+            <% end %>
+            <div><strong><%= link_to item.name, item_path(item), class: "text-dark font-weight-bold"%></strong></div>
+            <div><strong>¥<%= item.price.to_s(:delimited) %></strong></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

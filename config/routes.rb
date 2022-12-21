@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     #public/orders
     scope module: :public do
       post '/orders/confirm' => "orders#confirm"
-      get '/orders/complete'  =>  'orders#complete', as: 'complete'
+      get '/orders/complete' => 'orders#complete', as: 'complete'
       resources :orders, only: [:new, :create, :index, :show, :edit, :destroy, :update]
     end
 
@@ -38,9 +38,10 @@ Rails.application.routes.draw do
       delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all" #「resources:cart_items」の上にdestroy_allを持ってきたらidがつかない
       resources :cart_items, only: [:index,:update,:destroy,:create]
       resources :shipping_addresses
-      get '/items/searches'  =>  'items#searches', as: 'searches'
+      get '/items/searches' => 'items#searches', as: 'searches'
       resources :items
       resources :genres, only: [:show]
+      get '/shops/items' => 'shops#items', as: 'shop_items'
       resources :shops do
         resource :bookmarks, only: %i[create destroy]
       end
