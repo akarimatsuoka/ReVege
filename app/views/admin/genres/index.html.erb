@@ -37,7 +37,7 @@
 
   <div class="row d-flex justify-content-center">
     <div class="col-8">
-    <table class="mt-5 table text-center">
+      <table class="mt-5 table text-center">
         <% @genres.each do |genre| %>
           <tr>
             <th><%= genre.name %></th>
@@ -47,7 +47,8 @@
             </td>
           </tr>
          <% end %>
-     </table>
-     </div>
+      </table>
     </div>
-   </div>
+  </div>
+  <%= paginate @genres %>
+</div>
