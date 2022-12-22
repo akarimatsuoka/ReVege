@@ -5,8 +5,7 @@ class Public::ShopsController < ApplicationController
 
   def items
     @shop = Shop.find(params[:id])
-    @shop_items = @shop.items
+    @shop_items = @shop.items.page(params[:page])
   end
-
 
 end

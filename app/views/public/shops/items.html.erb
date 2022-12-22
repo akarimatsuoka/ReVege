@@ -1,17 +1,23 @@
-<div class="container">
+<div class="container py-3">
   <div class="row">
-    <div class="col">
+    <div class="col-12 mt-4 mb-5">
+      <h4 class="font-weight-bold"><%= @shop.name %>の商品ページ</h4>
+      <strong>（全<%= @shop_items.count %>件）</strong>
+    </div>
+
+    <div class="col-12">
       <div class="d-flex flex-wrap">
         <% @shop_items.each do |item| %>
-          <div style="margin-right: 10px;">
+          <div style="margin-right: 10px; margin-bottom: 30px;">
             <%= link_to item_path(item) do %>
-              <%= image_tag item.image, size: "150x150" %>
+              <%= image_tag item.image, size: "200x200" %>
             <% end %>
             <div><strong><%= link_to item.name, item_path(item), class: "text-dark font-weight-bold"%></strong></div>
             <div><strong>¥<%= item.price.to_s(:delimited) %></strong></div>
           </div>
         <% end %>
       </div>
+      <%= paginate @shop_items %>
     </div>
   </div>
 </div>

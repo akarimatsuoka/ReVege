@@ -33,7 +33,7 @@
 
       <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
-          <div style="margin-right: 10px;">
+          <div style="margin-right: 10px; margin-bottom: 30px;">
             <%= link_to item_path(item) do %>
               <%= image_tag item.image, size: "150x150" %>
             <% end %>
