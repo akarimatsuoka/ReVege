@@ -4,8 +4,8 @@ class Public::ShopsController < ApplicationController
   end
 
   def items
-    shop = Shop.pluck(:item_id) #Shopモデルの中でカスタマーidを見つけてきて、カスタマーidに紐づいてるshop_idを取得
-    @shop_items = Item.find(shop)
+    @shop = Shop.find(params[:id])
+    @shop_items = @shop.items
   end
 
 

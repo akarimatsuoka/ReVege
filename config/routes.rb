@@ -41,8 +41,11 @@ Rails.application.routes.draw do
       get '/items/searches' => 'items#searches', as: 'searches'
       resources :items
       resources :genres, only: [:show]
-      get '/shops/items' => 'shops#items', as: 'shop_items'
+
       resources :shops do
+        member do
+          get :items
+        end
         resource :bookmarks, only: %i[create destroy]
       end
 
