@@ -1,4 +1,6 @@
 class Public::ShopsController < ApplicationController
+  before_action :authenticate_customer!
+
   def show
     @shop = Shop.find(params[:id])
   end
