@@ -210,7 +210,7 @@
   ]
   )
   
-  OrderItems.create!(
+  OrderItem.create!(
   [
   {order_id: '1',
   item_id: '1',
