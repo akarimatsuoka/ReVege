@@ -1,4 +1,5 @@
 class Public::BookmarksController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     @shop = Shop.find(params[:shop_id]) #Shopモデルからshop_idを探してくる。

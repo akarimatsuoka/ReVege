@@ -1,6 +1,5 @@
 class Public::ItemsController < ApplicationController
-  
-    before_action :authenticate_customer!, except: [:index]
+  before_action :authenticate_customer!
 
   def index
     if params[:genre_id].present? #ジャンル検索のみ実行されてる場合

@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_customer!, only:[:create]
+  before_action :authenticate_customer!
   before_action :setup_cart_item!, only:[:create]
 
   def index
