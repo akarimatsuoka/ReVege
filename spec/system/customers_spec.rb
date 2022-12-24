@@ -12,12 +12,19 @@ RSpec.describe Customer, type: :system do
           it 'ユーザーの新規作成が成功' do
             # ユーザー新規登録画面へ遷移
             visit new_customer_registration_path
+            fill_in 'customer[last_name]', with: 'test'
+            fill_in 'customer[first_name]', with: 'test'
+            fill_in 'customer[last_name_kana]', with: 'test'
+            fill_in 'customer[first_name_kana]', with: 'test'
             # Emailテキストフィールドにtest@example.comと入力
-            fill_in 'Email', with: 'test@example.com'
+            fill_in 'customer[email]', with: 'test@example.com'
+            fill_in 'customer[postal_code]', with: '1111111'
+            fill_in 'customer[address]', with: 'test'
+            fill_in 'customer[phone_number]', with: '00000000000'
             # Passwordテキストフィールドにpasswordと入力
-            fill_in 'Password', with: 'password'
+            fill_in 'customer[password]', with: 'password'
             # Password confirmationテキストフィールドにpasswordと入力
-            fill_in 'Password confirmation', with: 'password'
+            fill_in 'customer[password_confirmation]', with: 'password'
             # 新規会員登録と記述のあるsubmitをクリックする
             click_button '新規会員登録'
             # login_pathへ遷移することを期待する
@@ -31,12 +38,19 @@ RSpec.describe Customer, type: :system do
           it 'ユーザーの新規作成が失敗' do
             # ユーザー新規登録画面へ遷移
             visit new_customer_registration_path
-            # Emailテキストフィールドをnil状態にする
-            fill_in 'Email', with: nil
+            fill_in 'customer[last_name]', with: 'test'
+            fill_in 'customer[first_name]', with: 'test'
+            fill_in 'customer[last_name_kana]', with: 'test'
+            fill_in 'customer[first_name_kana]', with: 'test'
+            # Emailテキストフィールドにtest@example.comと入力
+            fill_in 'customer[email]', with: nil
+            fill_in 'customer[postal_code]', with: '1111111'
+            fill_in 'customer[address]', with: 'test'
+            fill_in 'customer[phone_number]', with: '00000000000'
             # Passwordテキストフィールドにpasswordと入力
-            fill_in 'Password', with: 'password'
+            fill_in 'customer[password]', with: 'password'
             # Password confirmationテキストフィールドにpasswordと入力
-            fill_in 'Password confirmation', with: 'password'
+            fill_in 'customer[password_confirmation]', with: 'password'
             # 新規会員登録と記述のあるsubmitをクリックする
             click_button '新規会員登録'
             # users_pathへ遷移することを期待する
@@ -50,16 +64,23 @@ RSpec.describe Customer, type: :system do
           it 'ユーザーの新規作成が失敗する' do
             # ユーザー新規登録画面へ遷移
             visit new_customer_registration_path
-            # Emailテキストフィールドにlet(:user)に定義したユーザーデータのemailを入力
-            fill_in 'Email', with: customer.email
+            fill_in 'customer[last_name]', with: 'test'
+            fill_in 'customer[first_name]', with: 'test'
+            fill_in 'customer[last_name_kana]', with: 'test'
+            fill_in 'customer[first_name_kana]', with: 'test'
+            # Emailテキストフィールドに既に存在するメールアドレスを入力
+            fill_in 'customer[email]', with: customer.email
+            fill_in 'customer[postal_code]', with: '1111111'
+            fill_in 'customer[address]', with: 'test'
+            fill_in 'customer[phone_number]', with: '00000000000'
             # Passwordテキストフィールドにpasswordと入力
-            fill_in 'Password', with: 'password'
+            fill_in 'customer[password]', with: 'password'
             # Password confirmationテキストフィールドにpasswordと入力
-            fill_in 'Password confirmation', with: 'password'
+            fill_in 'customer[password_confirmation]', with: 'password'
             # 新規会員登録と記述のあるsubmitをクリックする
             click_button '新規会員登録'
             # 今いるページに遷移することを期待する
-            expect(current_path).to eq currrent_path
+            expect(current_path).to eq customer_registration_path
             # 遷移されたページに'メールアドレスはすでに存在します'の文字列があることを期待する
             expect(page).to have_content "メールアドレスはすでに存在します"
           end
