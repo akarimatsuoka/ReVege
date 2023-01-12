@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  
 
 #ゲストログインの情報
   def self.guest

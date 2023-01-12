@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       get '/items/searches' => 'items#searches', as: 'searches'
       resources :items
       resources :genres, only: [:show]
+      resources :contacts, only: [:new, :create]
+      post '/contacts/confirm' => "contacts#confirm"
+      post '/contacts/back' => "contacts#back", as: "back"
 
       resources :shops do
         member do
