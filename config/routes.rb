@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'contacts/index'
+  end
       # 顧客用
     # URL /customers/sign_in ...
     devise_for :customers, skip: [:passwords],controllers: {
@@ -67,5 +70,6 @@ Rails.application.routes.draw do
       resources :shops
       resources :customers
       resources :orders
+      resources :contacts, only: [:index, :show, :create]
     end
 end

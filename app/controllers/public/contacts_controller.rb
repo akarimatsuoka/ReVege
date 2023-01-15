@@ -27,10 +27,16 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_path
+      flash[:notice] = "※お問合せを受け付けました。回答は、ご入力いただいたメールアドレス宛てにご返信いたします。今しばらくお待ちください。"
+      redirect_to new_contact_path
     else
       render :new
     end
+  end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:name, :email, :phone_number, :subject, :content)
   end
 end

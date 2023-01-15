@@ -1,2 +1,40 @@
-<h1>Public::Contacts#new</h1>
-<p>Find me in app/views/public/contacts/new.html.erb</p>
+<div class="container py-5">
+  <h4 class="m-4 font-weight-bold"><strong>お問い合わせ</strong></h4>
+  <div class="flash">
+    <%= flash[:notice] %>
+  <div>
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @contact, url:contacts_confirm_path do |f| %>
+        <div>
+          <%= f.label :name, 'お名前' %>
+          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.text_field :email, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.label :phone_number, '電話番号' %>
+          <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.label :subject, '件名' %>
+          <%= f.text_field :subject, autofocus: true, class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.label :content, 'お問い合わせ内容' %>
+          <%= f.text_area :content, size: '10x10', class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.submit '入力内容確認' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

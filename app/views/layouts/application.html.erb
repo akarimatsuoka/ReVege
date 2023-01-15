@@ -77,6 +77,14 @@
 
     <footer class="footer pt-5 mt-5">
         <p style= "text-align: center;">@ReVege</p>
+
+        <% if customer_signed_in? %>
+          <li class="mr-2 mt-5">
+            <%=link_to new_contact_path, class:'text-secondary border-bottom' do %>
+              お問い合わせはこちら
+            <%end%>
+          </li>
+        <% end %>
   　</footer>
 
   </body>
