@@ -15,16 +15,6 @@
           </tr>
 
           <tr>
-            <td class="text-center" style="width: 30%;">メールアドレス</td>
-            <td><%= @contact.email %></td>
-          </tr>
-
-          <tr>
-            <td class="text-center" style="width: 30%;">電話番号</td>
-            <td><%= @contact.phone_number %></td>
-          </tr>
-
-          <tr>
             <td class="text-center" style="width: 30%;">件名</td>
             <td><%= @contact.subject %></td>
           </tr>
@@ -43,8 +33,6 @@
     <div class="col">
       <%= form_with model: @contact, url:admin_contacts_path, method: :post do |f| %>
         <%= f.hidden_field :customer_id, value: @contact.customer_id %>
-        <div>お名前： <%= @contact.name %></div>
-        <div>メールアドレス： <%= @contact.email %></div>
         <div>件名： <%= 'Re:' + @contact.subject %></div>
 
         <div>
