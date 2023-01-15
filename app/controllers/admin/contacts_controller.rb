@@ -9,18 +9,19 @@ class Admin::ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+    @customer = @contact.customer
+    @contact.customer_id = @customer.id
     if @contact.save
       flash[:notice] = "送信が完了しました。"
-      ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_path
+      redirect_to admin_contact_path
     else
-      render :new
+      render :show
     end
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :phone_number, :subject, :content)
+    params.require(:contact).permit(:name, :email, :phone_number, :subject, :content, :reply_content, :customer_id)
   end
 end

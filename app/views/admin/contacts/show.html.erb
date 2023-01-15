@@ -42,25 +42,18 @@
   <div class="row">
     <div class="col">
       <%= form_with model: @contact, url:admin_contacts_path, method: :post do |f| %>
+        <%= f.hidden_field :customer_id, value: @contact.customer_id %>
+        <div>お名前： <%= @contact.name %></div>
+        <div>メールアドレス： <%= @contact.email %></div>
+        <div>件名： <%= 'Re:' + @contact.subject %></div>
+
         <div>
-          <%= f.label :name, 'お名前：' %>　<%= @contact.name %>
+          <%= f.label :reply_content, '返信内容：' %>
+          <%= f.text_area :reply_content, size: '10x10', class: 'form-control' %>
         </div>
 
         <div>
-          <%= f.label :email, 'メールアドレス：' %>　<%= @contact.email %>
-        </div>
-
-        <div>
-          <%= f.label :subject, '件名：' %>　<%= @contact.subject %>
-        </div>
-
-        <div>
-          <%= f.label :content, '返信内容：' %>
-          <%= f.text_area :content, size: '10x10', class: 'form-control' %>
-        </div>
-
-        <div>
-          <%= f.submit '送信' %>
+          <%= f.submit '送信', class: 'btn btn-outline-dark mt-3' %>
         </div>
       <% end %>
     </div>

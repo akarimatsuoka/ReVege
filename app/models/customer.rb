@@ -28,6 +28,7 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :contacts
 
   has_many :bookmarks, dependent: :destroy #ブックマークのことを指してる
   has_many :bookmarks_shops, through: :bookmarks, source: :shop #shopのテーブルのことを指してる

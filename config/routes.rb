@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'contacts/index'
-  end
       # 顧客用
     # URL /customers/sign_in ...
     devise_for :customers, skip: [:passwords],controllers: {
@@ -44,7 +41,7 @@ Rails.application.routes.draw do
       get '/items/searches' => 'items#searches', as: 'searches'
       resources :items
       resources :genres, only: [:show]
-      resources :contacts, only: [:new, :create]
+      resources :contacts, only: [:new, :create, :index, :show]
       post '/contacts/confirm' => "contacts#confirm"
       post '/contacts/back' => "contacts#back", as: "back"
 

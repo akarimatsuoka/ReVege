@@ -7,21 +7,6 @@
       <table>
         <tbody>
           <tr>
-            <td class="text-center" style="width: 30%;">お名前</td>
-            <td><%= @contact.name %></td>
-          </tr>
-
-          <tr>
-            <td class="text-center" style="width: 30%;">メールアドレス</td>
-            <td><%= @contact.email %></td>
-          </tr>
-
-          <tr>
-            <td class="text-center" style="width: 30%;">電話番号</td>
-            <td><%= @contact.phone_number %></td>
-          </tr>
-
-          <tr>
             <td class="text-center" style="width: 30%;">件名</td>
             <td><%= @contact.subject %></td>
           </tr>
@@ -35,19 +20,19 @@
     </div>
   </div>
   <%= form_with model: @contact, url:contacts_path, method: :post do |f| %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :email %>
-    <%= f.hidden_field :phone_number %>
+    <%= f.hidden_field :name, value: @customer.last_name + @customer.first_name %>
+    <%= f.hidden_field :email, value: @customer.email %>
+    <%= f.hidden_field :phone_number, value: @customer.phone_number %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :content %>
-    <div><%= f.submit '送信' %></div>
+    <div><%= f.submit '送信', class: 'btn btn-outline-dark mt-3' %></div>
   <% end %>
   <%= form_with model: @contact, url:back_path, method: :post do |f| %>
-    <%= f.hidden_field :name %>
-    <%= f.hidden_field :email %>
-    <%= f.hidden_field :phone_number %>
+    <%= f.hidden_field :name, value: @customer.last_name + @customer.first_name %>
+    <%= f.hidden_field :email, value: @customer.email %>
+    <%= f.hidden_field :phone_number, value: @customer.phone_number %>
     <%= f.hidden_field :subject %>
     <%= f.hidden_field :content %>
-    <div><%= f.submit '入力画面に戻る' %></div>
+    <div><%= f.submit '入力画面に戻る', class: 'btn btn-outline-dark mt-2 btn-sm' %></div>
   <% end %>
 </div>
