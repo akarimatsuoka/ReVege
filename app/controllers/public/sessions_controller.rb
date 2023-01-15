@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    redirect_to my_page_path(customer), notice: 'guestuserでログインしました。'
+    redirect_to my_page_path, notice: 'guestuserでログインしました。'
   end
 
   # GET /resource/sign_in

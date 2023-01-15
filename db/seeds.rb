@@ -30,7 +30,6 @@ peach = Genre.find_or_create_by(name: "桃")
 vegetable = Genre.find_or_create_by(name: "野菜")
 jam = Genre.find_or_create_by(name: "ジャム")
 
-
 shops = [
   {
     name: "松岡ファーム",

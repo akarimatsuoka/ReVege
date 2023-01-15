@@ -1,0 +1,29 @@
+<div class="container py-5">
+  <h5 class="m-4 font-weight-bold"><strong>件名：<%= @contact.subject %></strong></h5>
+
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col">
+      <p>< お問い合わせ内容 ></p>
+      <p><%= @contact.content %></p>
+    </div>
+  </div>
+
+  <h4 class="m-4 font-weight-bold"><strong>返信内容</strong></h4>
+  <div class="row mb-5">
+    <div class="col">
+      <table>
+        <tbody>
+          <div>件名： <%= 'Re:' + @contact.subject %></div>
+          <tr>
+            <td class="text-center">< 返信内容 ></td>
+            <td style="white-space: pre-wrap;"><%= @contact.reply_content %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

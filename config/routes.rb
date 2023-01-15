@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       get '/items/searches' => 'items#searches', as: 'searches'
       resources :items
       resources :genres, only: [:show]
+      resources :contacts, only: [:new, :create, :index, :show]
+      post '/contacts/confirm' => "contacts#confirm"
+      post '/contacts/back' => "contacts#back", as: "back"
 
       resources :shops do
         member do
@@ -64,5 +67,6 @@ Rails.application.routes.draw do
       resources :shops
       resources :customers
       resources :orders
+      resources :contacts, only: [:index, :show, :create]
     end
 end
