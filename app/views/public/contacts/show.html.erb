@@ -8,22 +8,32 @@
   <div class="row mb-5">
     <div class="col">
       <p>< お問い合わせ内容 ></p>
-      <p><%= @contact.content %></p>
+      <p><%= simple_format(@contact.content) %></p>
     </div>
+  </div>
+
+  <div class="text-right">
+    <small class="text-black-50"><%= @contact.created_at.strftime("%Y年%m月%d日 %H時%M分") %></small>
   </div>
 
   <h4 class="m-4 font-weight-bold"><strong>返信内容</strong></h4>
   <div class="row mb-5">
     <div class="col">
-      <table>
-        <tbody>
-          <div>件名： <%= 'Re:' + @contact.subject %></div>
-          <tr>
-            <td class="text-center">< 返信内容 ></td>
-            <td style="white-space: pre-wrap;"><%= @contact.reply_content %></td>
-          </tr>
-        </tbody>
-      </table>
+      <% if @contact.reply_content.present? %>
+        <p>件名： <%= 'Re:' + @contact.subject %></p>
+        <p>< 返信内容 ></p>
+        <p><%= simple_format(@contact.reply_content) %></p>
+        <div class="text-right">
+          <small class="text-black-50"><%= @contact.updated_at.strftime("%Y年%m月%d日 %H時%M分") %></small>
+        </div>
+      <% else %>
+        <p>※返信はまだありません</p>
+      <% end %>
     </div>
   </div>
+  <% if @contact.reply_content.present? %>
+    <div class="text-right">
+      <%= link_to '更にお問い合わせする場合はこちら', new_contact_path(reply_id: @contact.id), class:'text-secondary border-bottom' %>
+    </div>
+  <% end %>
 </div>

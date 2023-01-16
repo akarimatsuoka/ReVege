@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      contact:
+        subject: 件名
+        content: お問い合わせ内容
       customer:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン

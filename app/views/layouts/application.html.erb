@@ -77,17 +77,22 @@
     </main>
 
     <footer class="footer pt-5 mt-5">
-        <p style= "text-align: center;">@ReVege</p>
+      <div class="container">
+        <p class="text-center">@ReVege</p>
 
         <% if customer_signed_in? %>
-        <ul class="navbar-nav ml-auto">
+        <ul class="d-flex justify-content-end list-unstyled p-0 m-0">
           <li class="mr-2 mt-5">
-            <%=link_to new_contact_path, class:'text-secondary border-bottom' do %>
+            <%= link_to new_contact_path, class:'text-secondary border-bottom' do %>
               お問い合わせはこちら
             <%end%>
           </li>
+          <li class="mr-2 mt-5">
+            利用規約
+          </li>
         </ul>
         <% end %>
+      </div>
   　</footer>
 
   </body>

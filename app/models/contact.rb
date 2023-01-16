@@ -1,3 +1,7 @@
 class Contact < ApplicationRecord
-  has_many :cutomer
+  belongs_to :customer
+
+  validates :subject, presence: true
+  validates :content, presence: true
+
 end

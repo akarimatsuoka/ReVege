@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-  
+
 
 #ゲストログインの情報
   def self.guest
@@ -46,5 +46,9 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :postal_code, presence: true
   validates :address, presence: true
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 
 end

@@ -8,6 +8,7 @@
   <table class="table table-bordered">
     <thead class="thead-dark text-center">
       <tr>
+        <th>Re</th>
         <th>件名</th>
         <th>氏名</th>
         <th>メールアドレス</th>
@@ -18,9 +19,16 @@
     <tbody class="text-center">
       <% @contacts.each do |contact| %>
         <tr>
+          <td>
+            <% unless contact.reply_id.blank? %>
+              <%= link_to "Re: #{contact.reply_id}", admin_contact_path(contact.reply_id) %>
+            <% else %>
+              <%= contact.id %>
+            <% end %>
+          </td>
           <td><%= link_to contact.subject, admin_contact_path(contact.id) %></td>
-          <td><%= contact.name %></td>
-          <td><%= contact.email %></td>
+          <td><%= contact.customer.name %></td>
+          <td><%= contact.customer.email %></td>
           <td><%= contact.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
         </tr>
       <% end %>

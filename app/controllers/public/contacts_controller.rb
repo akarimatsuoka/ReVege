@@ -18,11 +18,11 @@ class Public::ContactsController < ApplicationController
   end
 
   def create
-    @customer = current_customer
+    # @customer = current_customer
     @contact = Contact.new(contact_params)
-    @contact.customer_id = @customer.id
+    # @contact.customer_id = @customer.id
     if @contact.save
-      flash[:notice] = "※お問い合わせを受け付けました。回答は、ご入力いただいたメールアドレス宛てにご返信いたします。今しばらくお待ちください。"
+      flash[:notice] = "※お問い合わせを受け付けました。回答はサイト内にて返信いたします。今しばらくお待ちください。"
       redirect_to new_contact_path
     else
       render :new
@@ -30,16 +30,21 @@ class Public::ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.page(params[:page]).order(created_at: "DESC")
+    @contacts = current_customer.contacts.order(created_at: "DESC").page(params[:page])
   end
 
   def show
     @contact = Contact.find(params[:id])
+    # @reply = Contact.find(params[:id][:reply_content])
   end
 
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :phone_number, :subject, :content, :customer_id)
+    params.require(:contact).permit(:subject, :content)
+          .merge(
+            customer_id: current_customer.id,
+            reply_id: params[:reply_id].blank? ? nil : params[:reply_id]
+          )
   end
 end

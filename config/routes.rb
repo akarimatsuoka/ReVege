@@ -67,6 +67,6 @@ Rails.application.routes.draw do
       resources :shops
       resources :customers
       resources :orders
-      resources :contacts, only: [:index, :show, :create]
+      resources :contacts, only: [:index, :show, :update]
     end
 end

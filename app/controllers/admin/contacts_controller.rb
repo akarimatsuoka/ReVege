@@ -5,15 +5,14 @@ class Admin::ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
+    @customer = Customer.find(@contact.customer_id)
   end
 
-  def create
-    @contact = Contact.new(contact_params)
-    @customer = @contact.customer
-    @contact.customer_id = @customer.id
-    if @contact.save
+  def update
+    @contact = Contact.find(params[:id])
+    if @contact.update(contact_params)
       flash[:notice] = "送信が完了しました。"
-      redirect_to admin_contact_path
+      redirect_to request.referer
     else
       render :show
     end
@@ -22,6 +21,6 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:name, :email, :phone_number, :subject, :content, :reply_content, :customer_id)
+    params.require(:contact).permit(:reply_content)
   end
 end
