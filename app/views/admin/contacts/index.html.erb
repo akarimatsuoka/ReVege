@@ -8,7 +8,7 @@
   <table class="table table-bordered">
     <thead class="thead-dark text-center">
       <tr>
-        <th>Re</th>
+        <th></th>
         <th>件名</th>
         <th>氏名</th>
         <th>メールアドレス</th>
@@ -29,7 +29,7 @@
           <td><%= link_to contact.subject, admin_contact_path(contact.id) %></td>
           <td><%= contact.customer.name %></td>
           <td><%= contact.customer.email %></td>
-          <td><%= contact.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+          <td><%= contact.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
         </tr>
       <% end %>
     </tbody>
