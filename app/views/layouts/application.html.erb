@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Revege</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="ml-5" href="/"><%=image_tag "header3.png", size:"140x90" %></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                 <ul class="navbar-nav ml-auto ">
+
+                   <!--以下会員がログインした場合の表示-->
+                   <% if customer_signed_in? %>
+                      <li class="mr-2">
+                       <%=link_to my_page_path, class:'btn btn-malformation1' do %>
+                         <i class="fas fa-house-user mr-2"></i>マイページ
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to items_path, class:'btn btn-malformation1' do %>
+                         <i class="fas fa-seedling mr-2"></i>商品一覧
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2">
+                       <%=link_to cart_items_path, class:'btn btn-malformation1' do %>
+                        <i class="fas fa-shopping-cart mr-2"></i>カート
+                       <%end%>
+                      </li>
+
+                      <li class="mr-2 mt-5">
+                       <%=link_to destroy_customer_session_path, method: :delete, class:'text-secondary border-bottom' do %>
+                         ログアウト
+                       <%end%>
+                      </li>
+                   <!--以下、管理者がログインした場合の表示-->
+                   <% elsif admin_signed_in? %>
+                      <li class="mr-2"><%= link_to "問い合わせ一覧", admin_contacts_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "注文履歴一覧", admin_orders_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "会員一覧", admin_customers_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "商品一覧", admin_items_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "ショップ一覧", admin_shops_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "ジャンル一覧", admin_genres_path, class:'btn btn-outline-secondary btn-sm rounded-pill' %></li>
+                      <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:'btn btn-outline-info btn-sm rounded-pill' %></li>
+                   <!--以下はログインしてない場合の表示-->
+                   <% else %>
+                      <li class="mr-2">
+                        <%=link_to new_customer_session_path, class:"btn btn-malformation" do %>
+                          ログイン|会員登録
+                        <%end%>
+                      </li>
+                   <%end%>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer class="footer pt-5 mt-5">
+      <div class="container">
+        <p class="text-center">@ReVege</p>
+
+        <% if customer_signed_in? %>
+          <ul class="d-flex justify-content-end list-unstyled p-0 m-0">
+            <li class="mr-2 mt-5">
+              <%= link_to new_contact_path, class:'text-secondary border-bottom' do %>
+                お問い合わせはこち
+              <%end%>
+            </li>
+            <li class="mr-2 mt-5 text-secondary border-bottom">
+              利用規約
+            </li>
+          </ul>
+        <% end %>
+      </div>
+  　</footer>
+
+  </body>
+</html>
